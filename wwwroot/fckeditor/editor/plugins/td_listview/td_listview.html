@@ -1,0 +1,740 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Text field dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content="noindex, nofollow" name="robots" />
+	<script src="../../dialog/common/fck_dialog_common.js" type="text/javascript"></script>
+  <script type="text/javascript" src="/JS/utility.js"></script>
+	<script type="text/javascript">
+
+	    var dialog = window.parent; //应该是对话框外壳所对应的窗口 by dq 090520
+	    var oEditor = dialog.InnerDialogLoaded(); //获得最外层界面所对应的window，该函数在对话框外壳程序中(fckdialog.html)定义 by dq 090520
+
+	    // Gets the document DOM
+	    var oDOM = oEditor.FCK.EditorDocument; //获得编辑区域的iframe对应的窗口的document（定义及赋值：fck.js第942行-->114行-->fc,editingarea.js第28行-->220行），它是直接可编辑的 by dq 090520
+	    //Selection是什么？(在fckselection.js第24行定义)，GetSelectedElement函数在哪定义？(在fckselection_ie.js第48行定义) by dq 090520
+	    var oActiveEl = dialog.Selection.GetSelectedElement(); //获得编辑区域里被选中的控件对象 by dq 090520
+	    var item_id = "";
+
+	    //总行数
+	    var rows_count = 10;
+	    window.onload = function ()//对话框弹出时，最内层的对话框显示完成后，执行这个onload函数 by dq 090520
+	    {
+	        window.resizeTo(835, 180);
+
+	        if (oActiveEl && oActiveEl.tagName == 'IMG')//编辑一个编辑区域内的控件时，走这个分支 by dq 090520
+	        {
+	            GetE('ITEM_NAME').value = oActiveEl.getAttribute('title');
+	            item_id = oActiveEl.getAttribute('name').substr(5);
+
+	            var LV_TITLE = oActiveEl.getAttribute("lv_title");
+	            var LV_SIZE = oActiveEl.getAttribute("lv_size");
+	            var LV_TITLE_ARRAY = LV_TITLE.split("`");
+	            var LV_SIZE_ARRAY = LV_SIZE.split("`");
+	            var LV_SUM = oActiveEl.getAttribute("lv_sum");
+	            if (LV_SUM)
+	                var LV_SUM_ARRAY = LV_SUM.split("`");
+	            var LV_CAL = oActiveEl.getAttribute("lv_cal");
+	            if (LV_CAL)
+	                var LV_CAL_ARRAY = LV_CAL.split("`");
+	            var LV_COLTYPE = oActiveEl.getAttribute("lv_coltype");
+	            if (LV_COLTYPE)
+	                var LV_COLTYPE_ARRAY = LV_COLTYPE.split("`");
+	            var LV_COLVALUE = oActiveEl.getAttribute("lv_colvalue");
+	            if (LV_COLVALUE)
+	                var LV_COLVALUE_ARRAY = LV_COLVALUE.split("`");
+	            var DATA_TABLE = oActiveEl.getAttribute("data_table");
+	            if (DATA_TABLE)
+	                GetE("dataSrc").value = DATA_TABLE;
+	            var DATA_FIELD = oActiveEl.getAttribute("data_field");
+	            if (DATA_FIELD) {
+	                var DATA_FIELD_ARRAY = DATA_FIELD.split("`");
+	            }
+	            var DATA_QUERY = oActiveEl.getAttribute("data_query");
+	            if (DATA_QUERY) {
+	                var DATA_QUERY_ARRAY = DATA_QUERY.split("`");
+	            }
+	            else {
+	                var DATA_QUERY_ARRAY = "";
+	            }
+	            if (LV_TITLE_ARRAY.length - 1 > 10)
+	                rows_count = LV_TITLE_ARRAY.length - 1;
+	            for (i = 0; i < LV_TITLE_ARRAY.length - 1; i++) {
+	                if ((i + 1) > 10) {
+	                    add_row((i + 1));
+	                }
+	                var item_str = "item_" + (i + 1);
+	                var size_str = "size_" + (i + 1);
+	                var sum_str = "sum_" + (i + 1);
+	                var cal_str = "cal_" + (i + 1);
+	                var coltype_str = "coltype_" + (i + 1);
+	                var colvalue_str = "colvalue_" + (i + 1);
+	                var query_str = "query_" + (i + 1);
+	                GetE(item_str).value = LV_TITLE_ARRAY[i];
+	                GetE(size_str).value = LV_SIZE_ARRAY[i];
+	                if (LV_SUM) GetE(sum_str).checked = LV_SUM_ARRAY[i] == 1 ? true : false;
+	                if (LV_CAL) GetE(cal_str).value = LV_CAL_ARRAY[i];
+	                if (LV_COLTYPE) GetE(coltype_str).value = LV_COLTYPE_ARRAY[i];
+	                if (LV_COLVALUE) GetE(colvalue_str).value = LV_COLVALUE_ARRAY[i];
+	                //if(DATA_QUERY) GetE(query_str).value = DATA_QUERY_ARRAY[i] ;
+	            }
+	            //包含数据源的情况
+	            if (DATA_TABLE) {
+	                _get('getData.aspx?dataSrc=' + DATA_TABLE, '', function (req) {
+	                    if (req.responseText != "") {
+	                        for (var i = 1; i <= rows_count; i++) {
+	                            add_data_select(i, req.responseText, DATA_FIELD_ARRAY[i - 1], DATA_QUERY_ARRAY[i - 1]);
+	                        }
+	                    }
+	                });
+	            }
+	        }
+	        else//在编辑区域内新建一个控件时，走这个分支 by dq 090520
+	            oActiveEl = null;
+
+	        dialog.SetOkButton(true); //该函数在fckdialog.html 683行定义 by dq 090520
+	        //	dialog.SetAutoSize( true ) ;//该函数在fckdialog.html 213行定义 by dq 090520
+	        SelectField('ITEM_NAME'); //在编辑区域设置刚创建的控件为选中状态，该函数在fck_dialog_common.js 第100行定义 by dq 090520
+	    }
+
+	    function Ok() {
+	        oEditor.FCKUndo.SaveUndoStep();
+
+	        if (ITEM_NAME.value == "") {
+	            alert("控件名称不能为空");
+	            return;
+	        }
+
+	        //检验是否有重复的字段
+	        if (GetE("dataSrc").value != "") {
+	            var tmp_str = "";
+	            for (var i = 1; i <= rows_count; i++) {
+	                var dataFieldObj = document.getElementById("dataField_" + i);
+	                if (dataFieldObj.value == "")
+	                    continue;
+	                if (tmp_str.indexOf(dataFieldObj.value + ",") == -1) {
+	                    tmp_str += dataFieldObj.value + ",";
+	                }
+	                else {
+	                    alert("数据库字段不能重复");
+	                    return;
+	                }
+	            }
+	        }
+
+	        var LV_TITLE = "";
+	        var LV_SIZE = "";
+	        var LV_SUM = "";
+	        var LV_CAL = "";
+	        var LV_COLTYPE = "";
+	        var LV_COLVALUE = "";
+	        var data_table = "";            //数据表名
+	        var data_field = "";             //数据表字段
+	        data_fld_name = "";
+	        var query_field = "";             //查询字段
+	        var count = 0;
+	        var dataSrc = document.getElementById("dataSrc");
+	        for (i = 1; i <= rows_count; i++) {
+	            var item_str = document.getElementById("item_" + i);
+	            var size_str = document.getElementById("size_" + i);
+	            var sum_str = document.getElementById("sum_" + i);
+	            var cal_str = document.getElementById("cal_" + i);
+	            var coltype_str = document.getElementById("coltype_" + i);
+	            var colvalue_str = document.getElementById("colvalue_" + i);
+	            var query_str = document.getElementById("query_" + i);
+	            if (item_str.value != "") {
+	                LV_TITLE += item_str.value + "`";
+	                count++;
+	                LV_CAL += cal_str.value + "`";
+	                if (size_str.value != "")
+	                    LV_SIZE += size_str.value + "`";
+	                else
+	                    LV_SIZE += "10`";
+	                if (sum_str.checked == true)
+	                    LV_SUM += "1`";
+	                else
+	                    LV_SUM += "0`";
+	                str = colvalue_str.value;
+	                if (str.substring(str.length - 1) == ',') {
+	                    str = str.substring(0, str.length - 1);
+	                }
+	                LV_COLTYPE += coltype_str.value + "`";
+	                LV_COLVALUE += str + "`";
+	                if (dataSrc.value != "") {
+	                    var dataField_str = document.getElementById("dataField_" + i)
+	                    data_field += dataField_str.value + "`";
+	                    if (dataField_str.options[dataField_str.selectedIndex].text != "请选择数据库字段")
+	                        data_fld_name += dataField_str.options[dataField_str.selectedIndex].text + "`";
+
+	                    //查询字段
+	                    if (query_str.checked == true) {
+	                        query_field += "1`";
+	                    }
+	                    else {
+	                        query_field += "0`";
+	                    }
+	                }
+	            }
+	        }
+
+	        if (count == 0) {
+	            alert("表头项目不能为空");
+	            return;
+	        }
+
+//	        if (oActiveEl == null) {
+//	            _get("/general/system/workflow/flow_form/cool_form/get_item.php", "FORM_ID=" + oEditor.parent.form_id, function (req) { item_id = req.responseText; }, false);
+	        //	        }
+	        if (oActiveEl == null) {
+	            if (oEditor.parent.form_id > 0) {
+	                if (oEditor.parent.inputcount > 0) {
+	                    oEditor.parent.inputcount = oEditor.parent.inputcount + 1;
+	                } else {
+	                    _get("/App_Services/get_item.ashx", "FORM_ID=" + oEditor.parent.form_id + "&s=" + Math.random(), function (req) {
+	                        oEditor.parent.inputcount = parseInt(req.responseText);
+	                    }, false);
+	                }
+	            } else {
+	                oEditor.parent.inputcount = oEditor.parent.inputcount + 1;
+	            }
+	            item_id = oEditor.parent.inputcount;
+	        }
+	        oActiveEl = CreateNamedElement(oEditor, oActiveEl, 'img', { name: "DATA_" + item_id, title: ITEM_NAME.value.replace("\"", "&quot;") });
+
+	        SetAttribute(oActiveEl, 'LV_TITLE', LV_TITLE);
+	        SetAttribute(oActiveEl, 'LV_SIZE', LV_SIZE);
+	        SetAttribute(oActiveEl, 'LV_SUM', LV_SUM);
+	        SetAttribute(oActiveEl, 'LV_CAL', LV_CAL);
+	        SetAttribute(oActiveEl, 'LV_COLTYPE', LV_COLTYPE);
+	        SetAttribute(oActiveEl, 'LV_COLVALUE', LV_COLVALUE);
+	        SetAttribute(oActiveEl, 'border', 0);
+	        SetAttribute(oActiveEl, 'align', 'absMiddle');
+	        SetAttribute(oActiveEl, 'class', 'LIST_VIEW');
+	        SetAttribute(oActiveEl, 'className', 'LIST_VIEW');
+	        SetAttribute(oActiveEl, 'src', '/fckeditor/editor/images/listview.gif');
+	        if (dataSrc.value != "") {
+	            SetAttribute(oActiveEl, 'data_field', data_field);
+	            SetAttribute(oActiveEl, 'data_table', dataSrc.value);
+	            SetAttribute(oActiveEl, 'data_fld_name', data_fld_name);
+	            SetAttribute(oActiveEl, 'data_query', query_field);
+	        }
+	        else {
+	            oActiveEl.removeAttribute('data_table');
+	            oActiveEl.removeAttribute('data_field');
+	            oActiveEl.removeAttribute('data_fld_name');
+	            oActiveEl.removeAttribute('data_query');
+	        }
+	        oActiveEl.style.cursor = 'hand';
+	        dialog.CloseDialog();
+	        return true;
+	    }
+
+	    function mytip() {
+	        if (cal_tip.style.display == "none")
+	            cal_tip.style.display = "";
+	        else
+	            cal_tip.style.display = "none";
+	    }
+
+	    //添加多行 addNum 行数
+	    function add_rows(addNum) {
+	        for (var i = rows_count + 1; i <= rows_count + addNum; i++) {
+	            add_row(i);
+	        }
+	        rows_count += addNum;
+	    }
+
+	    //添加一行
+	    function add_row(i) {
+	        var table = document.getElementById('content_tbl');
+	        var row = table.insertRow();
+	        var cell1 = row.insertCell();
+	        cell1.align = "center";
+	        cell1.innerText = i;
+	        cell1.noWrap = true;
+
+	        var cell2 = row.insertCell();
+	        cell2.align = "center";
+	        cell2.title = "Tab键切换输入框";
+	        var input1 = document.createElement("INPUT");
+	        input1.id = "item_" + i;
+	        input1.type = "text";
+	        input1.size = "18";
+	        cell2.appendChild(input1);
+
+	        var cell3 = row.insertCell();
+	        cell3.noWrap = true;
+	        cell3.align = "center";
+	        cell3.title = "Tab键切换输入框";
+	        var input2 = document.createElement("INPUT");
+	        input2.id = "size_" + i;
+	        input2.type = "text";
+	        input2.size = "5";
+	        input2.value = "10";
+	        cell3.appendChild(input2);
+
+	        var cell4 = row.insertCell();
+	        cell4.noWrap = true;
+	        cell4.align = "center";
+	        cell4.title = "Tab键切换输入框";
+	        var input3 = document.createElement("INPUT");
+	        input3.id = "sum_" + i;
+	        input3.type = "checkbox";
+	        cell4.appendChild(input3);
+
+	        var cell5 = row.insertCell();
+	        cell5.noWrap = true;
+	        cell5.align = "center";
+	        cell5.title = "Tab键切换输入框";
+	        var input4 = document.createElement("INPUT");
+	        input4.id = "cal_" + i;
+	        input4.type = "text";
+	        input4.size = "15";
+	        cell5.appendChild(input4);
+
+	        var cell6 = row.insertCell();
+	        cell6.noWrap = true;
+	        cell6.align = "center";
+	        cell6.title = "Tab键切换输入框";
+	        var select1 = document.createElement("SELECT");
+	        select1.id = "coltype_" + i;
+	        select1.options.add(new Option("单行输入框", "text"));
+	        select1.options.add(new Option("多行输入框", "textarea"));
+	        select1.options.add(new Option("下拉菜单", "select"));
+	        select1.options.add(new Option("单选框", "radio"));
+	        select1.options.add(new Option("复选框", "checkbox"));
+	        select1.options.add(new Option("日期", "datetime"));
+	        cell6.appendChild(select1);
+
+	        var cell7 = row.insertCell();
+	        cell7.noWrap = true;
+	        cell7.align = "center";
+	        cell7.title = "Tab键切换输入框";
+	        var input5 = document.createElement("INPUT");
+	        input5.id = "colvalue_" + i;
+	        input5.type = "text";
+	        input5.size = "15";
+	        cell7.appendChild(input5);
+
+	        //如果有数据来源则加数据选择框
+	        if (document.getElementById("dataSrc").value != "") {
+	            _get('getData.php?dataSrc=' + document.getElementById("dataSrc").value, '', function (req) {
+	                if (req.responseText != "") {
+	                    add_data_select(i, req.responseText, "");
+	                }
+	            });
+	        }
+	    }
+	    //取得数据表字段
+	    function getData(val) {
+	        if (val != '') {
+	            _get('getData.aspx?dataSrc=' + val, '', function (req) {
+	                if (req.responseText != "") {
+	                    //$('dataMap').innerHTML = req.responseText;
+	                    for (var i = 1; i <= rows_count; i++) {
+	                        add_data_select(i, req.responseText, "");
+	                    }
+	                }
+	            });
+	        }
+	        else {
+	            //$('dataMap').innerHTML = '';
+	            for (var i = 1; i <= rows_count; i++) {
+	                clear_data_select(i);
+	            }
+	        }
+	    }
+
+	    //添加数据选择下拉框
+	    function add_data_select(num, str, field_data, query_data) {
+	        var endObj = document.getElementById("colvalue_" + num);
+	        var parentObj = endObj.parentNode;
+	        var newTdObj = document.createElement("TD");
+
+	        var queryObj = document.getElementById("query_" + num);
+
+	        //查询字段
+	        var check = "";
+	        if (query_data == 1) {
+	            check = "checked";
+	        }
+	        else {
+	            check = "";
+	        }
+	        var queryFieldStr = "<input type='checkbox' id='query_" + num + "'" + " value='1' " + check + " />查";
+	        newTdObj.id = "dataTd_" + num;
+	        newTdObj.innerHTML = str + queryFieldStr;
+	        SetAttribute(newTdObj.firstChild, "name", "dataField_" + num);
+	        SetAttribute(newTdObj.firstChild, "id", "dataField_" + num);
+	        if (field_data != "") {
+	            newTdObj.firstChild.value = field_data;
+	        }
+	        //删除原来的元素
+	        var node = document.getElementById("dataTd_" + num);
+	        if (node != null) {
+	            node.removeNode(true);
+	        }
+	        //添加新的元素
+	        parentObj.parentNode.appendChild(newTdObj);
+	    }
+	    //删除数据选择下拉框
+	    function clear_data_select(num) {
+	        var node = document.getElementById("dataTd_" + num);
+	        node.parentNode.removeChild(node);
+	    }
+</script>
+</head>
+<body style="overflow-x: hidden">
+
+<table width="100%" style="height: 100%">
+		<tr>
+			<td align="center">
+				<table cellspacing="3" id="content_tbl" cellpadding="0" border="0">
+          <tr>
+            <td nowrap colspan="6">控件名称：              <Input id="ITEM_NAME" type="text" size="20">
+              <input type="button" align="right" value="计算公式说明" onclick="mytip();">
+            </td>
+          </tr>
+          <tr>
+          	<td colspan="4">
+          		数据来源：            	<select name="dataSrc" id="dataSrc" type="SmallSelect" onchange="javascript:getData(this.value);">
+		    	 <option value="">选择数据来源</option>
+				 				      <option value="CUSTOMER">客户关系</option>
+				 				      <option value="PRODUCT">产品信息</option>
+				 				      <option value="CRM_ACCOUNT">客户信息(2011版)</option>
+				 				      <option value="CRM_PRODUCT">产品信息(2011版)</option>
+				 				      <option value="OFFICE_PRODUCTS">办公用品</option>
+				 				      <option value="HR_STAFF_INFO">人员档案</option>
+				 				      <option value="HR_STAFF_CONTRACT">合同信息</option>
+				 				</select>
+            </td>
+          </tr>
+          <tr><td colspan="6"><hr></td></tr>
+          <tr id="cal_tip" style="display:none;">
+            <td nowrap colspan="6" style="font-size: 10pt;font-family:宋体;color:blue;">计算公式说明：<br>
+            用[1] [2] [3]等代表某列的数值。运算符支持+,-,*,/,%等。<br>
+            <hr>
+            </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">序号</td>
+              <td nowrap align="center" title="Tab键切换输入框">列表控件表头项目&nbsp;&nbsp;</td>
+              <td nowrap align="center" title="Tab键切换输入框">宽度</td>
+              <td nowrap align="center" title="Tab键切换输入框">合计</td>
+              <td nowrap align="center" title="Tab键切换输入框">计算公式</td>
+              <td nowrap align="center" title="Tab键切换输入框">类型</td>
+              <td nowrap align="center" title="Tab键切换输入框">值(多个值之间用英文逗号分隔)</td>
+          </tr>
+          <tr>
+              <td nowrap align="center">1</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_1" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_1" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_1">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_1" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_1">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_1" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">2</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_2" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_2" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_2">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_2" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_2">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_2" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">3</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_3" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_3" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_3">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_3" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_3">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_3" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">4</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_4" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_4" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_4">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_4" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_4">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_4" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">5</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_5" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_5" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_5">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_5" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_5">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_5" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">6</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_6" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_6" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_6">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_6" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_6">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_6" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">7</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_7" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_7" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_7">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_7" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_7">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_7" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">8</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_8" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_8" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_8">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_8" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_8">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_8" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">9</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_9" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_9" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_9">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_9" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_9">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_9" type="text" size="15">
+              </td>
+          </tr>
+          <tr>
+              <td nowrap align="center">10</td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="item_10" type="text" size="18">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="size_10" type="text" size="5" value="10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input type="checkbox" id="sum_10">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="cal_10" type="text" size="15">
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">                       	
+                <select id="coltype_10">
+                 <option value="text">单行输入框</option>
+                 <option value="textarea">多行输入框</option>
+                 <option value="select">下拉菜单</option>
+                 <option value="radio">单选框</option>
+                 <option value="checkbox">复选框</option>
+                 <option value="datetime">日期</option>
+                </select>
+              </td>
+              <td nowrap align="center" title="Tab键切换输入框">
+              	<Input id="colvalue_10" type="text" size="15">
+              </td>
+          </tr>
+          			
+				</table>
+			</td>
+		</tr>
+		<tr>
+		    <td align="center"><input type="button" value="增加10行" onclick="add_rows(10);"></td>
+		</tr>
+</table>
+</body>
+</html>

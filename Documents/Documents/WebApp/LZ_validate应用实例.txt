@@ -1,0 +1,36 @@
+﻿validate验证应用实例
+     编辑者：张德显  日期：2012-7-7  
+==========================================
+
+1、引用
+    <script language="javascript" src="/App_js/validator.js"></script>
+
+2、示例
+	<asp:TextBox ID="txtNoNull" runat="server"  dataType="Require" msg="文档标题不能为空" require="false"></asp:TextBox>
+	属性：
+	dataType：验证类型
+		Require: 非空验证
+		Email:邮箱验证
+		Phone: 电话验证
+		Mobile: 手机验证
+		Url: 网址验证
+		IdCard: 身份证验证
+		Currency: 货币验证
+		Number: 数字验证
+		Zip: 邮编验证
+		QQ: QQ号码验证
+		Integer:整数验证，前面可加+ -号
+		Double: 小数验证
+		English: 英文字母验证
+		Chinese: 汉字验证
+		Custom:自定义验证，dataType="Custom"时需加 regexp="/^自定义表达式$/" 
+	msg：提示信息
+	require：为空是否验证。require="false"或require=""可以为空，此属性默认不写不可为空
+
+3、
+	<asp:Button ID="Button1" runat="server" onclick="Button1_Click" OnClientClick="return Validator.Validate(this.form,3);"  Text="提交"  />
+	Validator.Validate(this.form,3)
+	第二个参数：1是弹窗，3页面文本框后提示
+
+4、demo	
+	/App_Demo/validator_demo.aspx

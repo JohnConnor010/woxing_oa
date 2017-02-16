@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1657CE6E-3994-4F58-9A78-3B400F2616B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Documents</RootNamespace>
+    <AssemblyName>Documents</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="0.Public.DLL\AspNetPager.dll" />
+    <Content Include="0.Public.DLL\CurrencyTextBox.dll" />
+    <Content Include="0.Public.DLL\Dates.dll" />
+    <Content Include="0.Public.DLL\Dates.pdb" />
+    <Content Include="0.Public.DLL\Dates.xml" />
+    <Content Include="0.Public.DLL\FredCK.FCKeditorV2.dll" />
+    <Content Include="0.Public.DLL\HtmlAgilityPack.dll" />
+    <Content Include="0.Public.DLL\MySql.Data.dll" />
+    <Content Include="0.Public.DLL\Newtonsoft.Json.dll" />
+    <Content Include="0.Public.DLL\ULCode.Common.dll" />
+    <Content Include="0.Public.DLL\ULCode.Common.pdb" />
+    <Content Include="0.Public.DLL\Vandermotten.dll" />
+    <Content Include="1.ULCode.QDA.DLL\ULCode.QDA.dll" />
+    <Content Include="1.ULCode.QDA.DLL\ULCode.QDA.pdb" />
+    <Content Include="Sql Scripts\数据表结构.sql" />
+    <Content Include="Sql Scripts\客户管理相关表.sql" />
+    <Content Include="Sql Scripts\协议模板.sql" />
+    <Content Include="Sql Scripts\流程相关表.sql" />
+    <Content Include="Sql Scripts\分页Sql存储过程.sql" />
+    <Content Include="Sql Scripts\公司,部门,人员.sql" />
+    <Content Include="Sql Scripts\消息,在线状态.sql" />
+    <Content Include="Sql Scripts\职务,功能,职务功能对应.sql" />
+    <Content Include="WebApp\combotree的应用.txt" />
+    <Content Include="WebApp\jquery.validatebox的应用.txt" />
+    <Content Include="WebApp\LZ_validate应用实例.txt" />
+    <Content Include="WebApp\服务器端用户变量的验证.txt" />
+    <Content Include="WebApp\服务器端用户提交处理过程的标准.txt" />
+    <Content Include="Src Structures\源代码文件结构.txt" />
+    <Content Include="WebApp\treegrid使用说明.txt" />
+    <Content Include="WebApp\即时消息原理.txt" />
+    <Content Include="WebApp\用户在线监测与统计原理.txt" />
+    <Content Include="WebApp\表单定义说明文档.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebApp\CurrencyTextBox.zip" />
+    <None Include="WebApp\工作交接.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WX.Common\WX.Common.csproj">
+      <Project>{E0B4231B-B204-40F7-A771-A2C650B09F18}</Project>
+      <Name>WX.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WX.Model\WX.Model.csproj">
+      <Project>{6E88AE3E-A470-472A-B8F0-36ACA39168B9}</Project>
+      <Name>WX.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WX.User\WX.User.csproj">
+      <Project>{F128BCA7-FEC8-47FA-84DF-99534068A149}</Project>
+      <Name>WX.User</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="2.WX.User.DLL\" />
+    <Folder Include="3.WX.Model.DLL\" />
+    <Folder Include="4.WX.Common.DLL\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

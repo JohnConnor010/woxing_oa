@@ -1,0 +1,288 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manage/Master/MasterPage2.Master" AutoEventWireup="true" CodeBehind="User_EditUser.aspx.cs" Inherits="wwwroot.Manage.Sys.User_EditUser" ClientIDMode="Static" EnableEventValidation="false" %>
+<%@ MasterType VirtualPath="~/Manage/Master/MasterPage2.Master" %>
+<%@ Register src="../include/MenuBar.ascx" tagname="MenuBar" tagprefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ScriptPlaceHolder" runat="server">
+    <link href="/App_EasyUI/themes/default/easyui.css" rel="Stylesheet" type="text/css" />
+    <link href="/App_EasyUI/themes/icon.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="/App_EasyUI/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../App_EasyUI/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../App_EasyUI/plugins/jquery.extend.validatebox.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#ddlDepartment').combotree({
+                onSelect: function (node) {
+                    $('#departmentId').val(node.id);
+                }
+            });
+            $('#ddlDepartment').combotree("setValue", "<%=deptId %>");
+            $('#form1').submit(function () {
+                var b = $('#form1').form("validate");
+                return b;
+            });
+        });
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="NavigationHolder" runat="server">
+    系统管理 >> 员工管理 >> 修改员工信息
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="text" runat="server">
+<uc1:MenuBar ID="MenuBar1" runat="server" Key="com_p" CurIndex="2" Param1="{Q:id}" Param2="{Q:companyid}" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+    <div id="PanelManage">
+        <table class="table">
+        <caption style="text-align:left; font-style:normal;">用户重要信息</caption>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    所在公司&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">本系统支持多个公司同时运行，部门隶属于公司。</span>
+                    <asp:DropDownList ID="ddlCompany" runat="server"
+                        panelHeight="auto">
+                    </asp:DropDownList>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    真实姓名&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td><span class="note">必须填写员工的真实姓名（必须为汉字）。</span>
+                    <asp:TextBox ID="txtRealName" runat="server" Columns="30" MaxLength="20" class="easyui-validatebox"
+                        required="true" validtype="chinese" invalidMessage="必须为有效的中文汉字"></asp:TextBox>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    身份证号&nbsp;<a href="#" class="help">[?]
+                </th>
+                <td>
+                    <span class="note">务必输入员工的真实有效的身份证号码。</span>
+                    <asp:TextBox ID="txtIDCard" runat="server" Columns="30" MaxLength="90" class="easyui-validatebox"
+                        validType="idcard" required="true" invalidMessage="请输入有效的身份证号码！"></asp:TextBox>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    电子邮件&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">电子邮箱是OA系统与员工通讯的方式之一</span>
+                    <asp:TextBox ID="txtEmail" runat="server" Columns="30" MaxLength="100" class="easyui-validatebox"
+                        validType="email" invalidMessage="您输入的电子邮件格式不正确，请重新输入！" required="true"></asp:TextBox>
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table class="table">
+            <caption style="text-align: left; font-style: normal;">
+                用户基本信息</caption>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    出生日期&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">务必填写员工的出生日期。</span>
+                    <asp:TextBox ID="txtBirthday" runat="server" class="easyui-datebox" MaxLength="10"
+                        showSeconds="false" Style="width: 150px"></asp:TextBox>
+                    &nbsp;
+                </td>
+                <td style="width: 150px; border:1px solid #BDDBEF" rowspan="6">
+                    <div style="font-weight:bold;">
+                        用户照片</div>
+                    <div style="text-align:center; padding:3px 3px 3px 3px;">
+                        <div style="width:130; height: 130px; border: 1px dashed #787878; margin:auto;">
+                            <asp:Literal runat="server" ID="liPreZoomImage"></asp:Literal>
+                            </div>
+                    </div>
+                    <div>
+                        <asp:FileUpload ID="FileUpload1" Width="100%" runat="server" onchange="displayImages(this)" /></div>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    移动电话&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">务必填写员工的最新手机号码，并用于与系统通讯。</span>
+                    <asp:TextBox ID="txtMobile" runat="server" MaxLength="15" class="easyui-validatebox"
+                        validType="mobile" required="true" invalidMessage="请输入有效的手机号码！"></asp:TextBox>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    性别&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">务必填写员工的性别</span>
+                    <asp:RadioButtonList ID="rblSex" runat="server" RepeatDirection="Horizontal">
+                        <asp:ListItem Value="1">男</asp:ListItem>
+                        <asp:ListItem Value="0">女</asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    QQ号码&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">请填写员工的有效QQ号码</span>
+                    <asp:TextBox ID="txtQQNumber" runat="server" MaxLength="15" CssClass="easyui-validatebox"
+                        validType="qq" invalidMessage="您输入的QQ号码不正确！" required="true"></asp:TextBox>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    工作电话&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">工作电话是员工的联系方式。</span>
+                    <asp:TextBox ID="txtTelephone" runat="server" Columns="30" MaxLength="15" CssClass="easyui-validatebox"
+                        validType="phone" required="true"></asp:TextBox>
+                </td>
+            </tr>
+             <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    职称&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">职称。<span style="padding-left:150px;">民族。</span></span>
+                  <asp:TextBox Width="162" ID="ui_Titles" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>  
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>民族</b>&nbsp;&nbsp; <asp:TextBox Width="162" ID="ui_Ethnic" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>                
+                </td>
+            </tr>
+             <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    学历&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">最高学历。<span style="padding-left:122px;">所学专业。</span></span>
+                    <asp:DropDownList ID="ui_edu" runat="server">
+                    </asp:DropDownList><b style="padding-left:116px;">专业</b>&nbsp;&nbsp;<asp:TextBox Width="162" ID="ui_Prof" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>
+                </td>
+            </tr>
+             <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    外语语种&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">第一外语。<span style="padding-left:122px;">外语等级。</span></span>
+                   <asp:TextBox Width="162" ID="ui_ForeignL" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>等级</b>&nbsp;&nbsp;<asp:TextBox Width="162" ID="ui_Rating" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>
+                </td>
+            </tr>
+             <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    婚否&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">婚姻状况。<span style="padding-left:105px;">健康状况。</span></span>
+                    <asp:DropDownList ID="ui_Marital" runat="server">
+                      <asp:ListItem Value="0" Text="未婚"></asp:ListItem>
+                      <asp:ListItem Value="1" Text="已婚"></asp:ListItem>
+                    </asp:DropDownList><b style="padding-left:105px;">健康状况</b>&nbsp;&nbsp;<asp:TextBox Width="162" ID="ui_Health" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    籍贯&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">籍贯。<span style="padding-left:112px;">户口所在地。</span></span>
+                   <asp:TextBox Width="124" ID="ui_jg" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>户口所在地</b>&nbsp;&nbsp;<asp:TextBox Width="162" ID="ui_hkd" runat="server" MaxLength="20"
+                        validType="phone" required="true"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    居住地址&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">工作电话是员工的联系方式。</span>
+                    <asp:TextBox ID="txtAddress" runat="server" MaxLength="30" Columns="60" CssClass="easyui-validatebox"
+                        required="true"></asp:TextBox>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    员工备注&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">员工备注是关于员工的特殊经验与经历。</span> &nbsp;<asp:TextBox ID="txtContent" runat="server"
+                        Columns="60" Rows="6" TextMode="MultiLine"></asp:TextBox>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 135px; font-weight: bold;">
+                    排序&nbsp;<a href="#" class="help">[?]</a>
+                </th>
+                <td>
+                    <span class="note">排序号是在部门内部的排序数，主要用于显示排列。</span>
+                    <asp:TextBox ID="txtSort" runat="server" MaxLength="3" Columns="10" class="easyui-validatebox"
+                        validType="number" required="true" validMessage="请输入数字！"></asp:TextBox>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            
+             <tr>
+            <th style="width: 140px; font-weight: bold;">
+                变更责任人：&nbsp;<a href="#" class="help">[?]</a>
+            </th>
+            <td>
+                <span class="note">信息变更的责任人</span>
+                <asp:TextBox ID="li_logmanage" runat="server" Width="60" Enabled="false"  CssClass="easyui-validatebox" required="true"></asp:TextBox>
+                        <asp:HiddenField ID="ui_logmanage" runat="server" />
+                        <input type="button" class="SmallButtonB" value="选择责任人" onclick="PopupIFrame('/App_Ctrl/SelectPeople.aspx?CompanyId=11&SelectModel=Single','选择责任人','ui_logmanage','li_logmanage',468,395);" />
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <th style="width: 140px; font-weight: bold;">
+                变更备注：&nbsp;<a href="#" class="help">[?]</a>
+            </th>
+            <td>
+                <span class="note">信息变更简单说明：如变更的原因、谁提出的变更、变更内容一句话描述等</span>
+                <asp:TextBox ID="ui_logcontent" runat="server" Columns="150"
+                    MaxLength="50" CssClass="easyui-validatebox" required="true"></asp:TextBox>
+                &nbsp;
+            </td>
+        </tr>
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <td>
+                    <asp:Button ID="btnSubmit" runat="server" CssClass="button" Text="提交保存" OnClick="btnSubmit_Click" />
+                    &nbsp;&nbsp;&nbsp;<asp:Button ID="btnReset" runat="server" CssClass="button" Text="取消重填" />
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+</asp:Content>
+

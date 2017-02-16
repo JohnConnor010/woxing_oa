@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E88AE3E-A470-472A-B8F0-36ACA39168B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WX.Model</RootNamespace>
+    <AssemblyName>WX.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Documents\Documents\3.WX.Model.DLL\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dates">
+      <HintPath>..\WX.Flow\bin\Debug\Dates.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\WX.Flow\bin\Debug\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\WX.Flow\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ULCode.Common">
+      <HintPath>..\Documents\Documents\0.Public.DLL\ULCode.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ULCode.QDA, Version=2012.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Documents\Documents\1.ULCode.QDA.DLL\ULCode.QDA.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ass\Supplier.cs" />
+    <Compile Include="Ass\Equipment.cs" />
+    <Compile Include="Ass\Log.cs" />
+    <Compile Include="Ass\WareHouse.cs" />
+    <Compile Include="AT\Status.cs" />
+    <Compile Include="AT\Statement.cs" />
+    <Compile Include="AT\SignIn.cs" />
+    <Compile Include="AT\Log.cs" />
+    <Compile Include="Common\Company_Partner.cs" />
+    <Compile Include="Common\Company_WebSite.cs" />
+    <Compile Include="Common\CompanyLicense.cs" />
+    <Compile Include="Common\EmployeeContract.cs" />
+    <Compile Include="Count\CountSell.cs" />
+    <Compile Include="CRM\Common.cs" />
+    <Compile Include="CRM\Contact.cs" />
+    <Compile Include="CRM\Customer.cs" />
+    <Compile Include="CRM\CustomerProgram.cs" />
+    <Compile Include="CRM\CustomerTemp.cs" />
+    <Compile Include="CRM\ContactTemp.cs" />
+    <Compile Include="CRM\Customer_Label.cs" />
+    <Compile Include="CRM\Customer_Temp.cs" />
+    <Compile Include="CRM\Track.cs" />
+    <Compile Include="CRM\CustomerProducts.cs" />
+    <Compile Include="CRM\CustomerAgreement.cs" />
+    <Compile Include="CTR\Contract.cs" />
+    <Compile Include="Common\EmployeeCredential.cs" />
+    <Compile Include="Down\Annex.cs" />
+    <Compile Include="Flow\0.enum.cs" />
+    <Compile Include="Flow\0.FormFieldItem.cs" />
+    <Compile Include="Flow\Flow.cs" />
+    <Compile Include="Flow\Form.cs" />
+    <Compile Include="Flow\NumberRule.cs" />
+    <Compile Include="Flow\Process.cs" />
+    <Compile Include="Flow\Run.cs" />
+    <Compile Include="HR\TransferKong.cs" />
+    <Compile Include="HR\DutyLog.cs" />
+    <Compile Include="HR\Official.cs" />
+    <Compile Include="HR\IntoJob.cs" />
+    <Compile Include="HR\LeaveJob.cs" />
+    <Compile Include="Common\Log.cs" />
+    <Compile Include="HR\Receive.cs" />
+    <Compile Include="PDT\ProductDept.cs" />
+    <Compile Include="PDT\Product.cs" />
+    <Compile Include="Plan\Appraise.cs" />
+    <Compile Include="Plan\PlanSet.cs" />
+    <Compile Include="Plan\Task.cs" />
+    <Compile Include="Plan\Plan.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\AccountLog.cs" />
+    <Compile Include="PRO\Log.cs" />
+    <Compile Include="PRO\Process.cs" />
+    <Compile Include="PRO\Project.cs" />
+    <Compile Include="PRO\State.cs" />
+    <Compile Include="PRO\User.cs" />
+    <Compile Include="Common\Text_Template.cs" />
+    <Compile Include="Sys\CustomFields.cs" />
+    <Compile Include="Sys\CustomFields_Values.cs" />
+    <Compile Include="Count\TypeColum.cs" />
+    <Compile Include="WorkOrder\Appraisal.cs" />
+    <Compile Include="WorkOrder\Message.cs" />
+    <Compile Include="WorkOrder\Order.cs" />
+    <Compile Include="WorkOrder\Dept.cs" />
+    <Compile Include="XZ\Notify.cs" />
+    <Compile Include="XZ\TrainUsers.cs" />
+    <Compile Include="XZ\Train.cs" />
+    <Compile Include="XZ\XZ_NotifyFiles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WX.User\WX.User.csproj">
+      <Project>{F128BCA7-FEC8-47FA-84DF-99534068A149}</Project>
+      <Name>WX.User</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Dates.dll" />
+    <Content Include="bin\Debug\Dates.pdb" />
+    <Content Include="bin\Debug\Dates.xml" />
+    <Content Include="bin\Debug\HtmlAgilityPack.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

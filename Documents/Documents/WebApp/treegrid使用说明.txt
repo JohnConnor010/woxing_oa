@@ -1,0 +1,66 @@
+﻿easyui treegrid控件使用说明：
+1引入js和css：
+比如：
+<link href="/App_EasyUI/themes/default/easyui.css" rel="Stylesheet" type="text/css" />
+<link href="/App_EasyUI/themes/default/easyui.css" rel="Stylesheet" type="text/css" />
+<link href="/App_EasyUI/themes/icon.css" rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="/App_EasyUI/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/App_EasyUI/jquery.easyui.min.js"></script>
+2.定义treegrid界面：
+示例代码：
+<table id="tt"></table>
+$('#tt').treegrid({
+                url: '/App_Services/GetJsonOfAllDepartment.ashx',
+                idField: 'id',
+                treeField: 'name',
+                columns: [[
+                    { field: 'deptid', title: '部门编号', width: 60, align: 'center' },
+                    { field: 'name', title: '部门名称', width: 300, align: 'left' },
+                    { field: 'telephone', title: '联系电话', width: 200, align: 'left' },
+                    { field: 'fax', title: '传真号码', width: 200, align: 'left' },
+                    { field: 'manager', title: '部门主管', width: 100, align: 'left' },
+                    { field: 'personcount', title: '部门人数', width: 80, align: 'left' },
+                    { field: 'edit', title: '编辑', width: 60, align: 'center' },
+                    { field: 'delete', title: '删除', width: 60, align: 'center' }
+                ]]
+            });
+代码说明：
+field: 字段值，填充treegrid的值，对应json中的字段；
+title: grid表格的表头显示的文字；
+width: grid表格的宽度；
+align: grid表格的排序方式,值为left,right,center等；
+
+编辑字段的json字段带有<a href="#">编辑</a>字样
+删除字段的json字段带有<a href="aa()">删除</a>字样
+
+2.删除行操作步骤：
+1).弹出确认信息框，确认用户是否删除，$.messager.confirm("删除确认信息", "您确定要删除此部门吗？", function (result) {})
+2).如果result为true,获取所选择的节点，再判断是否是子节点，如果是，执行删除，
+function Confirm() {
+            $.messager.confirm("删除确认信息", "您确定要删除此部门吗？", function (result) {       /*确认用户是否删除*/
+                if (result) {                                                                      /*如果是*/
+                    var node = $('#tt').treegrid('getSelected');                                   /*获取所选择的节点*/
+                    var b = $('#tt').treegrid('isLeaf', node.id);                                  /*判断是否是子节点*/
+                    if (b) {                                                                       /*如果是子节点*/
+                        if (node) {                                                                /*判断节点是否为空*/
+                            $.ajax({                                                               /*调用ajax执行删除*/
+                                type: "get",
+                                url: "/App_Services/OperatingDepartment.ashx?action=delete&id=" + node.id,
+                                success: function (result) {
+                                    if (result == "0") {                                           /*如果ajax处理成功*/
+                                        $('#tt').treegrid('reload');                               /*重新加载数据*/
+                                    }
+                                    else {
+                                        $.messager.alert("提示信息", "删除失败！", "warning");     /*否则提示删除失败*/
+                                        return false;
+                                    }
+                                }
+                            });
+                        }
+                    } else {
+                        $.messager.alert("提示信息", "请先删除此部门下的子部门！", "warning");    /*如果不是子节点，提示先删除子节点*/
+                        $('#tt').treegrid('reload');
+                        return false;
+                    }
+                }
+            });

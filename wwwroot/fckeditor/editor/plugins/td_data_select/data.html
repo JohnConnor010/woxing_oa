@@ -1,0 +1,301 @@
+﻿<html>
+<head>
+<title>数据选择控件设定</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<base target="_self">
+<script type="text/javascript" src="/JS/utility.js"></script>
+<script>
+    var dialog = window.parent; //应该是对话框外壳所对应的窗口 by dq 090520
+    var oEditor = dialog.InnerDialogLoaded(); //获得最外层界面所对应的window，该函数在对话框外壳程序中(fckdialog.html)定义 by dq 090520
+
+    var parent_window = oEditor;
+
+    var oActiveEl = dialog.Selection.GetSelectedElement();
+
+    //-- 获取控件属性 --
+    var edit_flag = 0;
+    var g_dataSrc = "";
+    var item_id = "";
+
+    window.onload = function () {
+        //新版表单设计器 by dq 090526
+        var FCK = parent_window.FCKeditorAPI.GetInstance('FORM_CONTENT'); //获得表单设计器的顶层对象FCK，该方法定义位置fckeditorapi.js第47行 by dq 090521
+        var parent_doc = FCK.EditingArea.Window.document;
+        var ITEM_NAME = $('ITEM_NAME');
+
+        FCK.EditingArea.Focus();
+        var ITEM_NAME = document.getElementById("ITEM_NAME");
+        if (oActiveEl && oActiveEl.tagName == 'BUTTON') //编辑控件属性 by dq 090530
+        {
+            edit_flag = 1;
+            ITEM_NAME.value = oActiveEl.getAttribute("title");
+            var dataSrc = oActiveEl.getAttribute("data_table");
+            $('dataSrc').value = dataSrc;
+            g_dataSrc = dataSrc;
+            getData(dataSrc);
+
+            //数据输入方式 added by lx 20100518
+            var dataType = oActiveEl.getAttribute("data_type");
+            if (!dataType)
+                dataType = "0";
+
+            $('dataType' + dataType.toString()).setAttribute("checked", true);
+
+            var dataField = oActiveEl.getAttribute("data_field");
+            var dataFieldName = oActiveEl.getAttribute("data_fld_name");
+            var dataControl = oActiveEl.getAttribute("data_control");
+
+            var dataField_arr = dataField.split("`");
+            var dataFieldName_arr = dataFieldName.split("`");
+            var dataControl_arr = dataControl.split("`");
+
+            var dataQuery = oActiveEl.getAttribute("data_query");
+            if (dataQuery)
+                var dataQuery_arr = dataQuery.split("`");
+
+            var newRow;
+            for (i = 0; i < dataField_arr.length - 1; i++) {
+                if (dataQuery_arr)
+                    var isQuery = dataQuery_arr[i] == '1' ? "是" : "否";
+                else
+                    isQuery = "否";
+                newRow = $("map_tbl").insertRow(-1);
+                newRow.setAttribute('className', "TableContent");
+                newRow.setAttribute('align', "center");
+
+                var cell = newRow.insertCell(-1);
+                cell.innerHTML = dataField_arr[i];
+                cell = newRow.insertCell(-1);
+                cell.innerHTML = dataFieldName_arr[i];
+                cell = newRow.insertCell(-1);
+                cell.innerHTML = dataControl_arr[i];
+                cell = newRow.insertCell(-1);
+                cell.innerHTML = isQuery;
+                cell = newRow.insertCell(-1);
+                cell.innerHTML = '<a href="#" onclick="del(this)">删除</a>';
+            }
+        }
+        ITEM_NAME.focus();
+        dialog.SetOkButton(true); //该函数在fckdialog.html 683行定义 by dq 090520
+        dialog.SetAutoSize(true); //该函数在fckdialog.html 213行定义 by dq 090520
+    }
+
+    function Ok() {
+        var ITEM_NAME = document.getElementById("ITEM_NAME");
+        if (ITEM_NAME.value == "") {
+            alert("控件名称不能为空");
+            return;
+        }
+
+        //var parent_window = parent.dialogArguments;
+        var dataSrc = $('dataSrc').value;
+        var dataType = $('dataType0').checked == true ? 0 : 1;
+        var dataField = '';
+        var dataFieldName = '';
+        var dataControl = '';
+        var dataQuery = '';
+        //遍历数据项
+        for (var i = 1; i < $('map_tbl').rows.length; i++) {
+            var row = $('map_tbl').rows[i];
+            dataField += row.cells[0].innerHTML + "`";
+            dataFieldName += row.cells[1].innerHTML + "`";
+            dataControl += row.cells[2].innerHTML + "`";
+            if (row.cells[3].innerHTML == '是')
+                queryFlag = '1';
+            else
+                queryFlag = '0';
+            dataQuery += queryFlag + "`";  //查询字段
+        }
+
+        if (dataType == "1" && dataQuery.replace("`", "").indexOf("1") < 0) {
+            alert("必须设置查询主键！");
+            return;
+        }
+        if (oActiveEl == null) {
+            if (oEditor.parent.form_id > 0) {
+                if (oEditor.parent.inputcount > 0) {
+                    oEditor.parent.inputcount = oEditor.parent.inputcount + 1;
+                } else {
+                    _get("/App_Services/get_item.ashx", "FORM_ID=" + oEditor.parent.form_id + "&s=" + Math.random(), function (req) {
+                        oEditor.parent.inputcount = parseInt(req.responseText);
+                    }, false);
+                }
+            } else {
+                oEditor.parent.inputcount = oEditor.parent.inputcount + 1;
+            }
+            item_id = oEditor.parent.inputcount;
+        }
+        var item_name = ITEM_NAME.value.replace("\"", "&quot;")
+        var control_html = "<button title=\"" + item_name + "\" name=\"DATA_" + item_id + "\" class=\"DATA\" DATA_TABLE=\"" + dataSrc + "\" DATA_TYPE=\"" + dataType + "\" DATA_FIELD=\"" + dataField + "\" DATA_FLD_NAME=\"" + dataFieldName + "\" DATA_CONTROL=\"" + dataControl + "\" DATA_QUERY=\"" + dataQuery + "\">" + item_name + "</button>";
+
+        oEditor.FCKUndo.SaveUndoStep();
+
+        //新版表单设计器程序 by dq 090526
+        var FCK = parent_window.FCKeditorAPI.GetInstance('FORM_CONTENT'); //获得表单设计器的顶层对象FCK，该方法定义位置fckeditorapi.js第47行 by dq 090521
+        var parent_doc = FCK.EditingArea.Window.document;
+        FCK.EditingArea.Focus();
+
+        if (edit_flag == 1) {
+            //如果是编辑，先把选中的控件删掉 by dq 090526
+            FCK.Selection.Delete();
+        }
+
+        if (parent_doc.selection) {																				//兼容webkit核心 by JinXin @ 2012/5/25
+            parent_doc.selection.createRange().pasteHTML(control_html);
+        } else {
+            parent_doc.execCommand('InsertHtml', '', control_html);
+        }
+
+        dialog.CloseDialog();
+    }
+
+    function mytip() {
+        if (cal_tip.style.display == "none")
+            cal_tip.style.display = "";
+        else
+            cal_tip.style.display = "none";
+    }
+
+    function getData(val) {
+        if (val != '') {
+            _get('getData.aspx?dataSrc=' + val, '', function (req) {
+                if (req.responseText != "")
+                    $('dataMap').innerHTML = req.responseText;
+            });
+        }
+        else {
+            $('dataMap').innerHTML = '';
+        }
+    }
+
+    function add() {
+        var mytable = $('map_tbl');
+        var fieldObj = $('dataField');
+        var field = fieldObj.value;
+        var fieldName = fieldObj.options[fieldObj.selectedIndex].text;
+
+        var dataSrc = $('dataSrc').value;
+        if (g_dataSrc != dataSrc && g_dataSrc != "") {
+            var msg = "数据来源只能选择一种，变更数据来源，您之前的映射项将被清除，是否继续？";
+            if (!window.confirm(msg))
+                return;
+            else {
+                for (var i = 1; i < mytable.rows.length; i++)
+                    mytable.deleteRow(mytable.rows[i].rowIndex);
+            }
+        }
+
+        if (field == "") {
+            alert("请选择数据库字段");
+            return;
+        }
+        var control = $('itemTitle').value;
+        if (control == "") {
+            alert("请填写映射控件名称");
+            return;
+        }
+
+        for (var i = 1; i < mytable.rows.length; i++) {
+            var dataField = mytable.rows[i].cells[0].innerHTML;
+            if (dataField == field) {
+                alert("已经添加！");
+                return;
+            }
+        }
+        var queryFlag = $("isQuery").checked == true ? "1" : "0";
+        var queryFlagDesc = queryFlag == "1" ? "是" : "否";
+
+
+        //add a row
+        var newRow = $("map_tbl").insertRow(-1);
+        newRow.setAttribute('className', "TableContent");
+        newRow.setAttribute('align', "center");
+
+        var cell = newRow.insertCell(-1);
+        cell.innerHTML = field;
+        cell = newRow.insertCell(-1);
+        cell.innerHTML = fieldName;
+        cell = newRow.insertCell(-1);
+        cell.innerHTML = control;
+        cell = newRow.insertCell(-1);
+        cell.innerHTML = queryFlagDesc;
+        cell = newRow.insertCell(-1);
+        cell.innerHTML = '<a href=\"#\" onclick="del(this)">删除</a>';
+    }
+
+    function del(obj) {
+        var del_tr = obj.parentNode.parentNode;
+        if (is_moz) {
+            del_tr.parentNode.removeChild(del_tr);
+        }
+        else
+            del_tr.removeNode(true);
+    }	
+
+
+</script>
+<style>
+#map_tbl {
+	border: 1px solid #ccc;
+	margin-top: 5px;
+}
+#map_tbl .TableHeader td{
+	background: #f5f5f5;
+	border-bottom: 1px solid #ccc;
+	line-height:1.5em;
+}
+</style>
+</head>
+
+<body topmargin="0">
+
+<table border="0" width="100%" class="TableList" style="border-bottom:0" align="center">
+  <tr>
+    <td nowrap class="TableContent" width=120>控件名称：</td>
+    <td class="TableData">
+    	<input type="text" class="SmallInput" name="ITEM_NAME" id="ITEM_NAME" size=20>
+    </td>
+  </tr>
+  <tr>
+    <td nowrap class="TableContent">数据选取方式：</td>
+    <td class="TableData">
+	<input type="radio" name="dataType" id="dataType0" value=0 checked><label for="dataType0">弹出窗口选取</label>
+    <input type="radio" name="dataType" id="dataType1" value=1><label for="dataType1">根据录入项自动关联</label>
+    </td>
+  </tr>
+  <tr>
+    <td nowrap class="TableContent">数据来源：</td>
+    <td class="TableData">
+    	<select name="dataSrc" id="dataSrc" type="SmallSelect" onchange="javascript:getData(this.value);">
+    	 <option value="">选择数据来源</option>
+         <option value="CUSTOMER">客户关系</option>
+         <option value="PRODUCT">产品信息</option>
+         <option value="CRM_ACCOUNT">客户信息(2011版)</option>
+         <option value="CRM_PRODUCT">产品信息(2011版)</option>
+         <option value="OFFICE_PRODUCTS">办公用品</option>
+         <option value="HR_STAFF_INFO">人员档案</option>
+         <option value="HR_STAFF_CONTRACT">合同信息</option>
+    </td>
+  </tr>
+  <tr>
+  	<td nowrap class="TableContent">添加映射关系</td>
+  	<td id="dataMap" class="TableData">
+    </td>
+  </tr>
+  <tr class="TableControl" style = "display:none">
+  	<td nowrap colspan=2 align="center">
+  		<input type="button" onclick="my_submit();" value="确定" class="SmallButton">
+  	</td>
+  </tr> 
+</table> 
+<table id="map_tbl" border="0" width="100%" class="TableList" align="center">  
+  <tr class="TableHeader">
+      <td nowrap align="center">数据库字段</td>
+      <td nowrap align="center">字段名称</td>
+      <td nowrap align="center" >映射控件名称</td>
+      <td nowrap align="center" >作为查询字段</td>
+      <td nowrap align="center">操作</td>
+  </tr>
+</table>
+</body>
+</html>

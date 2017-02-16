@@ -1,0 +1,136 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ass_SelectConsuming.aspx.cs" Inherits="wwwroot.Manage.Assets.Ass_SelectConsuming" ClientIDMode="Static" %>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link type="text/css" href="../css/style.css" rel="stylesheet" rev="stylesheet" media="all" />
+    <link type="text/css" rel="Stylesheet" href="../css/AspnetPager.css" />
+    <style type="text/css">
+        #norSearch, #advSearch
+        {
+            background: url("../../images/search_button.png") no-repeat scroll 0 0 transparent;
+            height: 33px;
+            margin: 3px;
+            width: 107px;
+        }
+        input.toolBtnA, input.toolBtnB, input.toolBtnC
+        {
+            background: url("../../images/m_button.png") repeat scroll 0 0 transparent;
+            border: 0 none;
+            color: #1866F4;
+            cursor: pointer;
+            font-family: 微软雅黑,宋体,sans-serif;
+            font-size: 11pt;
+            height: 23px;
+            text-decoration: none;
+            width: 114px;
+        }
+    </style>
+    <script type="text/javascript" src="../../App_Scripts/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript">        
+        function CheckSelect(sender) {
+            var container = document.getElementsByName("c1");
+            $.each(container, function (i, item) {
+                container[i].checked = false;
+            });
+            sender.checked = true;
+            var ID = $('input[@name=c1]:checked').val();
+            $.ajax({
+                type: "get",
+                cache:false,
+                url: "/App_Services/GetJsonOfConsumingByID.ashx?ID=" + ID,
+                success: function (result) {
+                    $('#hidden_json').val(result);
+                }
+            });
+        }
+    </script>
+</head>
+<body id="C_News">
+    <form id="form1" runat="server">
+    <input type="hidden" id="hidden_json" />
+    <div id="PanelShow">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>
+                        产品编号
+                    </td>
+                    <td>
+                        产品名称
+                    </td>
+                    <td>
+                        单位
+                    </td>
+                    <td>
+                        数量
+                    </td>
+                    <td>
+                        领用人
+                    </td>
+                    <td>
+                        单价
+                    </td>
+                    <td>
+                        领用部门
+                    </td>
+                    <td>
+                        领用时间
+                    </td>
+                    <td>
+                        选择
+                    </td>
+                </tr>
+            </thead>
+            <tbody> 
+                <asp:Repeater ID="ConsumingRepeater" runat="server">           
+                <ItemTemplate>
+                <tr>
+                    <td>
+                        <%#Eval("ProductID") %>
+                    </td>
+                    <td>
+                        <%#Eval("ProductName") %>
+                    </td>
+                    <td>
+                        <%#Eval("ProductUnit") %>
+                    </td>
+                    <td>
+                        <%#Eval("Quantity") %>
+                    </td>
+                    <td>
+                        <%#Eval("UserName") %>
+                    </td>
+                    <td>
+                        <%#Eval("Price") %>
+                    </td>
+                    <td>
+                        <%#Eval("DepartmentName") %>
+                    </td>
+                    <td>
+                        <%#Eval("AddDate") %>
+                    </td>
+                    <td>                        
+                        <span><input type="checkbox" value='<%#Eval("ID") %>' name="c1" onclick="CheckSelect(this);" /></span>
+                    </td>
+                </tr>
+                </ItemTemplate>
+                </asp:Repeater>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="12">
+                    <webdiyer:AspNetPager ID="AspNetPager1" runat="server" OnPageChanged="AspNetPager1_PageChanged" CssClass="badoo">
+                </webdiyer:AspNetPager>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
+

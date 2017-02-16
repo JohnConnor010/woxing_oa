@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.3077</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{839A6494-3630-4A7E-A51E-7E0D0ABB18B9}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>ULCode.QDA</AssemblyName>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Documents\Documents\1.ULCode.QDA.DLL\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\ULCode.QDA.DLL\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ULCode.QDA</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=5.1.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Name>System.Configuration</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="ULCode.Common, Version=2010.1.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ULCode.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ULCode.QDA.dll" />
+    <Content Include="bin\Debug\ULCode.QDA.pdb" />
+    <Content Include="bin\Release\Interop.TT_CNConfig.dll" />
+    <Content Include="bin\Release\MySql.Data.dll" />
+    <Content Include="bin\Release\ULCode.Common.dll" />
+    <Content Include="bin\Release\ULCode.Data.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="1_Settings\0.CnStrSetting.cs" />
+    <Compile Include="1_Settings\0.DbSetting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="1_Settings\0.DynamicSqlStatement.cs" />
+    <Compile Include="1_Settings\1.AppSettingSqlStatement.cs" />
+    <Compile Include="1_Settings\1.WebConfigCnSetting.cs" />
+    <Compile Include="1_Settings\2.Debug.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="1_Settings\2.SqlErr.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2_DataVisit\Common.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2_DataVisit\MsSql.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2_DataVisit\MySql.cs" />
+    <Compile Include="2_DataVisit\Odbc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2_DataVisit\OleDb.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2_DataVisit\Oracle.cs" />
+    <Compile Include="2_DataVisit\SqlBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="2_DataVisit\XSql.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="3_OutPut\Bind.cs" />
+    <Compile Include="3_OutPut\DbResult.cs" />
+    <Compile Include="3_OutPut\DbValue.cs" />
+    <Compile Include="3_OutPut\DbValues.cs" />
+    <Compile Include="3_OutPut\XDataTable.cs" />
+    <Compile Include="4_DataEntity\DefaultValueMode.cs" />
+    <Compile Include="4_DataEntity\XDataEntity.cs" />
+    <Compile Include="4_DataEntity\XDataField.cs" />
+    <Compile Include="4_DataEntity\XDataModel.cs" />
+    <Compile Include="4_DataEntity\XEntity.cs" />
+    <Compile Include="4_DataEntity\XModel.cs" />
+    <Compile Include="4_DataEntity\XSqlExpression.cs" />
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Properties\Settings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Global.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

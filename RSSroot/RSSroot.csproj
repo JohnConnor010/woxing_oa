@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAB13B87-C61D-41BD-BAC8-5542DA9ACAA1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RSSroot</RootNamespace>
+    <AssemblyName>RSSroot</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\%40asset.gif" />
+    <Content Include="images\4.gif" />
+    <Content Include="images\64.bmp" />
+    <Content Include="images\Appraise1.jpg" />
+    <Content Include="images\Appraise2.jpg" />
+    <Content Include="images\Appraise3.jpg" />
+    <Content Include="images\arrow_up.gif" />
+    <Content Include="images\attach.gif" />
+    <Content Include="images\back.gif" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bg2.jpg" />
+    <Content Include="images\bg_input_text.png" />
+    <Content Include="images\big_btn_a.png" />
+    <Content Include="images\big_btn_b.png" />
+    <Content Include="images\big_btn_c.png" />
+    <Content Include="images\big_btn_d.png" />
+    <Content Include="images\big_btn_e.png" />
+    <Content Include="images\big_card.png" />
+    <Content Include="images\btn_a.png" />
+    <Content Include="images\btn_c.png" />
+    <Content Include="images\btn_d.png" />
+    <Content Include="images\btn_e.png" />
+    <Content Include="images\button.jpg" />
+    <Content Include="images\button0.jpg" />
+    <Content Include="images\ccorrect_btn.js" />
+    <Content Include="images\close.png" />
+    <Content Include="images\comp.gif" />
+    <Content Include="images\Customer.gif" />
+    <Content Include="images\delete.gif" />
+    <Content Include="images\dept-1.gif" />
+    <Content Include="images\dept.gif" />
+    <Content Include="images\deptPlan.gif" />
+    <Content Include="images\dialogclose.gif" />
+    <Content Include="images\domain.gif" />
+    <Content Include="images\down.gif" />
+    <Content Include="images\duty.gif" />
+    <Content Include="images\edit.gif" />
+    <Content Include="images\favorites.gif" />
+    <Content Include="images\focus.gif" />
+    <Content Include="images\folder_tabs_bg.png" />
+    <Content Include="images\form.gif" />
+    <Content Include="images\form\adv_query.png" />
+    <Content Include="images\form\auto.gif" />
+    <Content Include="images\form\calc.gif" />
+    <Content Include="images\form\calendar.gif" />
+    <Content Include="images\form\checkbox.gif" />
+    <Content Include="images\form\circle_green.gif" />
+    <Content Include="images\form\circle_red.gif" />
+    <Content Include="images\form\data.gif" />
+    <Content Include="images\form\dot3.gif" />
+    <Content Include="images\form\flow.gif" />
+    <Content Include="images\form\form.gif" />
+    <Content Include="images\form\imgupload.gif" />
+    <Content Include="images\form\listmenu.gif" />
+    <Content Include="images\form\listview.gif" />
+    <Content Include="images\form\pic.png" />
+    <Content Include="images\form\progressbar.gif" />
+    <Content Include="images\form\qrcode.gif" />
+    <Content Include="images\form\radio.gif" />
+    <Content Include="images\form\sign.gif" />
+    <Content Include="images\form\textarea.gif" />
+    <Content Include="images\form\textfield.gif" />
+    <Content Include="images\form\user.gif" />
+    <Content Include="images\Grade\1.jpg" />
+    <Content Include="images\Grade\10.jpg" />
+    <Content Include="images\Grade\11.jpg" />
+    <Content Include="images\Grade\12.jpg" />
+    <Content Include="images\Grade\13.jpg" />
+    <Content Include="images\Grade\14.jpg" />
+    <Content Include="images\Grade\15.jpg" />
+    <Content Include="images\Grade\2.jpg" />
+    <Content Include="images\Grade\3.jpg" />
+    <Content Include="images\Grade\4.jpg" />
+    <Content Include="images\Grade\5.jpg" />
+    <Content Include="images\Grade\6.jpg" />
+    <Content Include="images\Grade\7.jpg" />
+    <Content Include="images\Grade\8.jpg" />
+    <Content Include="images\Grade\9.jpg" />
+    <Content Include="images\green_arrow.gif" />
+    <Content Include="images\jia.jpg" />
+    <Content Include="images\jian.jpg" />
+    <Content Include="images\jindu.gif" />
+    <Content Include="images\msg.wav" />
+    <Content Include="images\mywork.jpg" />
+    <Content Include="images\mywork3.jpg" />
+    <Content Include="images\mywork4.jpg" />
+    <Content Include="images\mywork5.jpg" />
+    <Content Include="images\mywork6.jpg" />
+    <Content Include="images\mywork7.jpg" />
+    <Content Include="images\mywork8.jpg" />
+    <Content Include="images\m_button.png" />
+    <Content Include="images\no picture.jpg" />
+    <Content Include="images\nophoto.gif" />
+    <Content Include="images\ok51.gif" />
+    <Content Include="images\ok52.gif" />
+    <Content Include="images\planbanck.gif" />
+    <Content Include="images\plan_banck.jpg" />
+    <Content Include="images\print.gif" />
+    <Content Include="images\procstate0.bmp" />
+    <Content Include="images\procstate1.bmp" />
+    <Content Include="images\procstate10.bmp" />
+    <Content Include="images\procstate2.bmp" />
+    <Content Include="images\procstate3.bmp" />
+    <Content Include="images\procstate4.bmp" />
+    <Content Include="images\procstate5.bmp" />
+    <Content Include="images\procstate6.bmp" />
+    <Content Include="images\procstate7.bmp" />
+    <Content Include="images\procstate8.bmp" />
+    <Content Include="images\procstate9.bmp" />
+    <Content Include="images\productenble0.bmp" />
+    <Content Include="images\productenble1.bmp" />
+    <Content Include="images\rbg.jpg" />
+    <Content Include="images\right.gif" />
+    <Content Include="images\right.jpg" />
+    <Content Include="images\rtype1.png" />
+    <Content Include="images\rtype2.png" />
+    <Content Include="images\rtype3.png" />
+    <Content Include="images\search_button.png" />
+    <Content Include="images\sign.gif" />
+    <Content Include="images\tbg.jpg" />
+    <Content Include="images\type1.png" />
+    <Content Include="images\type2.png" />
+    <Content Include="images\type3.png" />
+    <Content Include="images\type4.png" />
+    <Content Include="images\up.gif" />
+    <Content Include="images\user.gif" />
+    <Content Include="images\userPlan.gif" />
+    <Content Include="images\user\man_icon.gif" />
+    <Content Include="images\user\man_icon_offline.gif" />
+    <Content Include="images\user\mygroup.png" />
+    <Content Include="images\user\woman_icon.gif" />
+    <Content Include="images\user\woman_icon_offline.gif" />
+    <Content Include="images\workflow.gif" />
+    <Content Include="images\work_left.gif" />
+    <Content Include="images\work_right.gif" />
+    <Content Include="images\wrang.gif" />
+    <Content Include="img\1212.jpg" />
+    <Content Include="img\2116394I5T.jpg" />
+    <Content Include="img\29896-100P4114605.jpg" />
+    <Content Include="img\al.gif" />
+    <Content Include="img\arrow.jpg" />
+    <Content Include="img\arrow_red.jpg" />
+    <Content Include="img\arrow_red.png" />
+    <Content Include="img\delete.gif" />
+    <Content Include="img\edit_people.gif" />
+    <Content Include="img\flow.gif" />
+    <Content Include="img\info_fail.jpg" />
+    <Content Include="img\info_nologin.jpg" />
+    <Content Include="img\info_nologin_old.jpg" />
+    <Content Include="img\info_nopower.jpg" />
+    <Content Include="img\info_RepeatSign.jpg" />
+    <Content Include="img\info_success.gif" />
+    <Content Include="img\line.gif" />
+    <Content Include="img\logo.jpg" />
+    <Content Include="img\mail2852l.gif" />
+    <Content Include="img\mail_attachment.gif" />
+    <Content Include="img\mail_isread.gif" />
+    <Content Include="img\mail_noread.gif" />
+    <Content Include="img\news.gif" />
+    <Content Include="img\open_attac1hment.gif" />
+    <Content Include="img\open_attachment.gif" />
+    <Content Include="img\open_attacwhment.gif" />
+    <Content Include="img\Snap\all_windows.gif" />
+    <Content Include="img\Snap\all_windowsActive.gif" />
+    <Content Include="img\Snap\all_windowsHover.gif" />
+    <Content Include="img\Snap\bullet.gif" />
+    <Content Include="img\Snap\clear.gif" />
+    <Content Include="img\Snap\collapsed_toggleExpand.gif" />
+    <Content Include="img\Snap\collapsed_toggleExpandActive.gif" />
+    <Content Include="img\Snap\collapsed_toggleExpandHover.gif" />
+    <Content Include="img\Snap\collapsed_toggleMinimize.gif" />
+    <Content Include="img\Snap\collapsed_toggleMinimizeActive.gif" />
+    <Content Include="img\Snap\collapsed_toggleMinimizeHover.gif" />
+    <Content Include="img\Snap\cs.gif" />
+    <Content Include="img\Snap\grip.gif" />
+    <Content Include="img\Snap\ins.gif" />
+    <Content Include="img\Snap\i_closed.gif" />
+    <Content Include="img\Snap\i_discuss.gif" />
+    <Content Include="img\Snap\i_email.gif" />
+    <Content Include="img\Snap\i_open.gif" />
+    <Content Include="img\Snap\i_print.gif" />
+    <Content Include="img\Snap\i_rate.gif" />
+    <Content Include="img\Snap\logo_webui.gif" />
+    <Content Include="img\Snap\snap_headerBg.gif" />
+    <Content Include="img\Snap\snap_headerCollapsedBg.gif" />
+    <Content Include="img\Snap\snap_icon.gif" />
+    <Content Include="img\Snap\toggle_expand.gif" />
+    <Content Include="img\Snap\toggle_expandActive.gif" />
+    <Content Include="img\Snap\toggle_expandHover.gif" />
+    <Content Include="img\Snap\toggle_minimize.gif" />
+    <Content Include="img\Snap\toggle_minimizeActive.gif" />
+    <Content Include="img\Snap\toggle_minimizeHover.gif" />
+    <Content Include="img\titleBg.png" />
+    <Content Include="img\_blank.gif" />
+    <Content Include="Style\CityScript.js" />
+    <Content Include="Style\images\031.gif" />
+    <Content Include="Style\images\a.gif" />
+    <Content Include="Style\images\arrow.gif" />
+    <Content Include="Style\images\arrow_down.gif" />
+    <Content Include="Style\images\big_btn_c.png" />
+    <Content Include="Style\images\big_card.png" />
+    <Content Include="Style\images\blocks.gif" />
+    <Content Include="Style\images\bootnbg.jpg" />
+    <Content Include="Style\images\btn_a.png" />
+    <Content Include="Style\images\btn_b.png" />
+    <Content Include="Style\images\bt_bg.gif" />
+    <Content Include="Style\images\bullet.gif" />
+    <Content Include="Style\images\buttom-copy-bg.gif" />
+    <Content Include="Style\images\buttom-left.gif" />
+    <Content Include="Style\images\buttom-right.gif" />
+    <Content Include="Style\images\buttom_bgs.gif" />
+    <Content Include="Style\images\buttom_left2.gif" />
+    <Content Include="Style\images\buttom_right2.gif" />
+    <Content Include="Style\images\buttonbg.gif" />
+    <Content Include="Style\images\calendar.png" />
+    <Content Include="Style\images\CategorizeMenu.png" />
+    <Content Include="Style\images\common\none.gif" />
+    <Content Include="Style\images\content-bg-line.gif" />
+    <Content Include="Style\images\cs.css" />
+    <Content Include="Style\images\Css.css" />
+    <Content Include="Style\images\delete.gif" />
+    <Content Include="Style\images\directory.png" />
+    <Content Include="Style\images\domain.gif" />
+    <Content Include="Style\images\edit.gif" />
+    <Content Include="Style\images\endbott.gif" />
+    <Content Include="Style\images\exam_content.gif" />
+    <Content Include="Style\images\foot_bg.gif" />
+    <Content Include="Style\images\fu_btn.gif" />
+    <Content Include="Style\images\g.gif" />
+    <Content Include="Style\images\group.gif" />
+    <Content Include="Style\images\group.png" />
+    <Content Include="Style\images\icon-demo.gif" />
+    <Content Include="Style\images\icon-login-seaver.gif" />
+    <Content Include="Style\images\icon-mail2.gif" />
+    <Content Include="Style\images\icon-phone.gif" />
+    <Content Include="Style\images\icon2_004.png" />
+    <Content Include="Style\images\icon2_089.png" />
+    <Content Include="Style\images\icon2_090.png" />
+    <Content Include="Style\images\ico_accept.gif" />
+    <Content Include="Style\images\ico_accept1.gif" />
+    <Content Include="Style\images\ico_accept2.gif" />
+    <Content Include="Style\images\ico_arrow.gif" />
+    <Content Include="Style\images\ico_bbs.gif" />
+    <Content Include="Style\images\ico_browsefiles.gif" />
+    <Content Include="Style\images\ico_browsefolder.gif" />
+    <Content Include="Style\images\ico_cache.gif" />
+    <Content Include="Style\images\ico_database.gif" />
+    <Content Include="Style\images\ico_data_blank.gif" />
+    <Content Include="Style\images\ico_data_delete.gif" />
+    <Content Include="Style\images\ico_data_insert.gif" />
+    <Content Include="Style\images\ico_data_start.gif" />
+    <Content Include="Style\images\ico_data_stop.gif" />
+    <Content Include="Style\images\ico_data_undo.gif" />
+    <Content Include="Style\images\ico_down.gif" />
+    <Content Include="Style\images\ico_error.gif" />
+    <Content Include="Style\images\ico_exam.gif" />
+    <Content Include="Style\images\ico_false.gif" />
+    <Content Include="Style\images\ico_faq.gif" />
+    <Content Include="Style\images\ico_file.gif" />
+    <Content Include="Style\images\ico_folder.gif" />
+    <Content Include="Style\images\ico_guestbook.gif" />
+    <Content Include="Style\images\ico_help.gif" />
+    <Content Include="Style\images\ico_home.gif" />
+    <Content Include="Style\images\ico_html.gif" />
+    <Content Include="Style\images\ico_import.gif" />
+    <Content Include="Style\images\ico_import111.gif" />
+    <Content Include="Style\images\ico_intro.gif" />
+    <Content Include="Style\images\ico_jingpin.gif" />
+    <Content Include="Style\images\ico_jingpin_insert.gif" />
+    <Content Include="Style\images\ico_link.gif" />
+    <Content Include="Style\images\ico_log.gif" />
+    <Content Include="Style\images\ico_network.gif" />
+    <Content Include="Style\images\ico_news.gif" />
+    <Content Include="Style\images\ico_notice.gif" />
+    <Content Include="Style\images\ico_password.gif" />
+    <Content Include="Style\images\ico_photo.gif" />
+    <Content Include="Style\images\ico_products.gif" />
+    <Content Include="Style\images\ico_registerkey.gif" />
+    <Content Include="Style\images\ico_right.gif" />
+    <Content Include="Style\images\ico_right.png" />
+    <Content Include="Style\images\ico_search.gif" />
+    <Content Include="Style\images\ico_settings.gif" />
+    <Content Include="Style\images\ico_sql.gif" />
+    <Content Include="Style\images\ico_system.gif" />
+    <Content Include="Style\images\ico_task.gif" />
+    <Content Include="Style\images\ico_template.gif" />
+    <Content Include="Style\images\ico_true.gif" />
+    <Content Include="Style\images\ico_up.gif" />
+    <Content Include="Style\images\ico_up1.gif" />
+    <Content Include="Style\images\ico_upload.gif" />
+    <Content Include="Style\images\ico_user.gif" />
+    <Content Include="Style\images\ico_userclass.gif" />
+    <Content Include="Style\images\ico_usergroup.gif" />
+    <Content Include="Style\images\ico_video.gif" />
+    <Content Include="Style\images\ico_vocabulary.gif" />
+    <Content Include="Style\images\ico_wrong.png" />
+    <Content Include="Style\images\imageedit.gif" />
+    <Content Include="Style\images\index_15.gif" />
+    <Content Include="Style\images\index_3.gif" />
+    <Content Include="Style\images\index_8.gif" />
+    <Content Include="Style\images\index_9.jpg" />
+    <Content Include="Style\images\index_but_02.gif" />
+    <Content Include="Style\images\index_but_04.gif" />
+    <Content Include="Style\images\ipsecurity.gif" />
+    <Content Include="Style\images\layout-browser-hd-bg.gif" />
+    <Content Include="Style\images\left-bg.gif" />
+    <Content Include="Style\images\line.gif" />
+    <Content Include="Style\images\line2.jpg" />
+    <Content Include="Style\images\linkbg2.gif" />
+    <Content Include="Style\images\loading.gif" />
+    <Content Include="Style\images\login-buttom-bg.gif" />
+    <Content Include="Style\images\login-content-bg.gif" />
+    <Content Include="Style\images\login-top-bg.gif" />
+    <Content Include="Style\images\login-wel.gif" />
+    <Content Include="Style\images\login.css" />
+    <Content Include="Style\images\login_bg.jpg" />
+    <Content Include="Style\images\logo.jpg" />
+    <Content Include="Style\images\logout.gif" />
+    <Content Include="Style\images\luck.gif" />
+    <Content Include="Style\images\mail.gif" />
+    <Content Include="Style\images\menubox_memberico.gif" />
+    <Content Include="Style\images\menu_bg.gif" />
+    <Content Include="Style\images\msg.wav" />
+    <Content Include="Style\images\nav_bg.gif" />
+    <Content Include="Style\images\nav_link.png" />
+    <Content Include="Style\images\news.gif" />
+    <Content Include="Style\images\new_ico001.gif" />
+    <Content Include="Style\images\new_ico002.gif" />
+    <Content Include="Style\images\new_ico003.gif" />
+    <Content Include="Style\images\new_ico01.gif" />
+    <Content Include="Style\images\new_ico02.gif" />
+    <Content Include="Style\images\new_ico03.gif" />
+    <Content Include="Style\images\new_ico04.gif" />
+    <Content Include="Style\images\new_ico05.gif" />
+    <Content Include="Style\images\new_ico06.gif" />
+    <Content Include="Style\images\new_ico07.gif" />
+    <Content Include="Style\images\new_ico08.gif" />
+    <Content Include="Style\images\new_ico09.gif" />
+    <Content Include="Style\images\new_ico10.gif" />
+    <Content Include="Style\images\new_ico11.gif" />
+    <Content Include="Style\images\new_ico12.gif" />
+    <Content Include="Style\images\new_ico13.gif" />
+    <Content Include="Style\images\new_ico14.gif" />
+    <Content Include="Style\images\new_ico15.gif" />
+    <Content Include="Style\images\new_ico16.gif" />
+    <Content Include="Style\images\new_ico17.gif" />
+    <Content Include="Style\images\new_ico18.gif" />
+    <Content Include="Style\images\new_ico19.gif" />
+    <Content Include="Style\images\new_ico20.gif" />
+    <Content Include="Style\images\no picture.jpg" />
+    <Content Include="Style\images\noscript.gif" />
+    <Content Include="Style\images\notandum.gif" />
+    <Content Include="Style\images\notandumlist.gif" />
+    <Content Include="Style\images\phone.gif" />
+    <Content Include="Style\images\pic1.gif" />
+    <Content Include="Style\images\plugin_big.gif" />
+    <Content Include="Style\images\Printb.gif" />
+    <Content Include="Style\images\reload.png" />
+    <Content Include="Style\images\remove.png" />
+    <Content Include="Style\images\rightpart_cacheico1.png" />
+    <Content Include="Style\images\right_smbg.jpg" />
+    <Content Include="Style\images\set.gif" />
+    <Content Include="Style\images\ShowCustomPropertiesPage.png" />
+    <Content Include="Style\images\skin.css" />
+    <Content Include="Style\images\sms.gif" />
+    <Content Include="Style\images\style_login.css" />
+    <Content Include="Style\images\submitMiniGreen.gif" />
+    <Content Include="Style\images\submitMiniGreenOver.gif" />
+    <Content Include="Style\images\Submit_bg.gif" />
+    <Content Include="Style\images\t2bg1.gif" />
+    <Content Include="Style\images\t2bg4.gif" />
+    <Content Include="Style\images\t2bg5.gif" />
+    <Content Include="Style\images\TableDrawTable.png" />
+    <Content Include="Style\images\table_top_bg.png" />
+    <Content Include="Style\images\temp.gif" />
+    <Content Include="Style\images\thead_bg.gif" />
+    <Content Include="Style\images\tools-sprites-trans.gif" />
+    <Content Include="Style\images\top_bg.gif" />
+    <Content Include="Style\images\top_bt.jpg" />
+    <Content Include="Style\images\touxiang.jpg" />
+    <Content Include="Style\images\user_logo.png" />
+    <Content Include="Style\images\vie.gif" />
+    <Content Include="Style\images\webmail.gif" />
+    <Content Include="Style\images\X.gif" />
+    <Content Include="Style\images\yc.gif" />
+    <Content Include="Style\images\yx.gif" />
+    <Content Include="Style\images\zanwu.gif" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7350</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

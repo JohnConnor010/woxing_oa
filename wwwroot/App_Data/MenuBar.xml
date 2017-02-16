@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Menus>
+  <Menus title="系统信息">
+      <Menu key="sysLogs">
+        <MenuBar url="/Manage/sys/Logs_Account.aspx" title="登录日志"></MenuBar>
+        <MenuBar url="/Manage/sys/Logs_System.aspx" title="操作日志"></MenuBar>
+      </Menu>
+      <Menu key="online">
+        <MenuBar url="/Manage/Work/Users_Online.aspx" title="在线用户"></MenuBar>
+      </Menu>
+      <Menu key="myMsg">
+        <MenuBar url="/Manage/Main/MessageList.aspx?state=0" title="我的消息"></MenuBar>
+        <MenuBar url="/Manage/Main/MessageList.aspx?state=1" title="未读消息"></MenuBar>
+    </Menu>
+    <Menu key="sysSet">
+      <MenuBar url="/Manage/Sys/Set_Cache.aspx" title="缓存更新"></MenuBar>
+      <MenuBar url="/Manage/CTR/ProductSetting.aspx" title="环境设置"></MenuBar>
+      <MenuBar url="/Manage/Sys/Sys_CustomFields.aspx" title="自定义字段"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="个人设置">
+    <Menu key="priv">
+      <MenuBar url="/Manage/Private/Priv_UserInfo.aspx" title="个人信息"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Skill.aspx" title="个人技能"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Education.aspx" title="教育经历"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Family.aspx" title="家庭成员"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Work.aspx" title="工作经历"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Credentials.aspx" title="员工证书"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_UrgentLink.aspx" title="紧急联络人"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_ModiPwd.aspx" title="修改密码"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Logs.aspx" title="个人日志"></MenuBar>
+    </Menu>
+    <Menu key="priv-admin">
+      <MenuBar url="/Manage/Private/Priv_ModiPwd.aspx" title="修改密码"></MenuBar>
+      <MenuBar url="/Manage/Private/Priv_Logs.aspx" title="个人日志"></MenuBar>
+    </Menu>
+    <Menu key="priv_user_detail">
+      <MenuBar url="/Manage/HR/User_UserList.aspx?CompanyID=11" title="返回·员工列表"></MenuBar>
+      <MenuBar url="/Manage/HR/User_EditUser.aspx?UserID={0}" title="基本信息"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Skill.aspx?UserID={0}" title="个人技能"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Education.aspx?UserID={0}" title="教育经历"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Work.aspx?UserID={0}" title="工作经历"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Family.aspx?UserID={0}" title="家庭成员"></MenuBar>
+      <MenuBar url="/Manage/HR/User_UrgentLink.aspx?UserID={0}" title="紧急联络人"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Credentials.aspx?UserID={0}" title="证书"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="基础设置">
+    <Menu key="comp">
+      <MenuBar url="/Manage/Sys/Dept_Company.aspx" title="返回·公司列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_CompanyDetail.aspx?CompanyID={0}" title="公司信息"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslicense.aspx?CompanyID={0}&amp;type=1" title="经营性证件"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslicense.aspx?CompanyID={0}&amp;type=2" title="银行帐号"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_CompanysPartner.aspx?CompanyID={0}" title="法人/股东"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslicense.aspx?CompanyID={0}&amp;type=4" title="资质证件"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslicense.aspx?CompanyID={0}&amp;type=5" title="验资报告"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslicense.aspx?CompanyID={0}&amp;type=6" title="公司章程"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslicense.aspx?CompanyID={0}&amp;type=7" title="其它证件"></MenuBar>
+    </Menu>
+    <Menu key="com">
+      <MenuBar url="/Manage/Sys/Dept_myCompany.aspx" title="公司信息"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Company.aspx" title="公司列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_CompanyWebSite.aspx" title="域名管理"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_Companyslog.aspx" title="变更记录"></MenuBar>
+    </Menu>
+    <Menu key="com_p">
+      <MenuBar url="/Manage/Sys/Dept_CompanysPartner.aspx?companyID={1}&amp;type=3" title="返回·法人/股东列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/User_EditUser.aspx?id={0}&amp;companyid={1}" title="基本信息"></MenuBar>
+      <MenuBar url="/Manage/Sys/User_Skill.aspx?UserID={0}&amp;companyid={1}" title="个人技能"></MenuBar>
+      <MenuBar url="/Manage/Sys/User_Education.aspx?UserID={0}&amp;companyid={1}" title="教育经历"></MenuBar>
+      <MenuBar url="/Manage/Sys/User_Work.aspx?UserID={0}&amp;companyid={1}" title="工作经历"></MenuBar>
+      <MenuBar url="/Manage/Sys/User_Family.aspx?UserID={0}&amp;companyid={1}" title="家庭成员"></MenuBar>
+      <MenuBar url="/Manage/Sys/User_UrgentLink.aspx?UserID={0}&amp;companyid={1}" title="紧急联络人"></MenuBar>
+    </Menu>
+    <Menu key="dept">
+      <MenuBar url="/Manage/sys/Dept_DepartmentList.aspx?companyId=11" title="部门管理"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_AddDepartment.aspx?CompanyID=11" title="添加部门"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_BatchChange.aspx?CompanyID=11" title="部门员工调整"></MenuBar>
+    </Menu>
+    <Menu key="Dept_Division">
+      <MenuBar url="/Manage/sys/Dept_DepartmentList.aspx?companyId=11" title="事业部管理"></MenuBar>
+    </Menu>
+    <Menu key="duty">
+      <MenuBar url="/Manage/Sys/Duty_List.aspx?CompanyID=11" title="职务管理"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_Manage.aspx?CompanyID=11" title="新增职务"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_Catagory.aspx?CompanyID=11" title="职务分类"></MenuBar>
+    </Menu>
+    <Menu key="dept-modi">
+      <MenuBar url="/Manage/sys/Dept_DepartmentList.aspx?CompanyID=11" title="返回·部门列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/Dept_EditDepartment.aspx?companyID={0}&amp;DepartmentId={1}" title="修改部门"></MenuBar>
+    </Menu>
+    <Menu key="duty-modi">
+      <MenuBar url="/Manage/sys/Duty_List.aspx?CompanyID=11" title="返回·职务列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_Edit.aspx?companyID={0}&amp;DutyId={1}" title="修改职务"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_Func.aspx?companyID={0}&amp;DutyId={1}" title="职务权限"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_Menu.aspx?companyID={0}&amp;DutyId={1}" title="职务菜单"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_BuildMenu.aspx?companyID={0}&amp;DutyId={1}" title="生成菜单"></MenuBar>
+    </Menu>
+    <Menu key="duty_detail">
+      <MenuBar url="/Manage/Sys/Duty_DutyDetail.aspx" title="具体职务查看"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_DutyCtrl.aspx" title="具体职务控制"></MenuBar>
+      <MenuBar url="/Manage/Sys/Duty_DutyGive.aspx" title="具体职务分配"></MenuBar>
+    </Menu>
+    <Menu key="account">
+      <MenuBar url="/Manage/sys/User_UserList.aspx?CompanyId=11" title="用户管理"></MenuBar>
+    </Menu>
+    <Menu key="account-Sys">
+      <MenuBar url="/Manage/sys/User_UserList.aspx?CompanyId={0}" title="返回·用户列表"></MenuBar>
+      <MenuBar url="/Manage/sys/User_ResetPwd.aspx?UserID={1}&amp;CompanyId={0}" title="重置密码"></MenuBar>
+      <MenuBar url="/Manage/sys/User_AccountState.aspx?UserID={1}&amp;CompanyId={0}" title="账户状态"></MenuBar>
+      <MenuBar url="/Manage/sys/User_Logs.aspx?UserID={1}&amp;CompanyId={0}" title="登录日志"></MenuBar>
+    </Menu>
+    <Menu key="func">
+      <MenuBar url="/Manage/Sys/Func_ListFunctions.aspx" title="功能管理"></MenuBar>
+      <MenuBar url="/Manage/Sys/Func_AddFunctions.aspx" title="新增功能"></MenuBar>
+      <MenuBar url="/Manage/Sys/Func_FunctionType.aspx" title="功能分类"></MenuBar>
+    </Menu>
+    <Menu key="func-modi">
+      <MenuBar url="/Manage/Sys/Func_ListFunctions.aspx" title="返回·功能列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/Func_EditFunctions.aspx?FunctionId={0}" title="修改功能"></MenuBar>
+    </Menu>
+    <Menu key="menu">
+      <MenuBar url="/Manage/Sys/Menu_List.aspx" title="菜单管理"></MenuBar>
+      <MenuBar url="/Manage/Sys/Menu_Add.aspx" title="新增菜单"></MenuBar>
+    </Menu>
+    <Menu key="menu-modi">
+      <MenuBar url="/Manage/Sys/Menu_List.aspx" title="返回·菜单列表"></MenuBar>
+      <MenuBar url="/Manage/Sys/Menu_Edit.aspx?MenuId={0}" title="修改菜单"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="流程">
+    <Menu key="form">
+      <MenuBar url="/Manage/Flow/Form_List.aspx" title="表单列表"></MenuBar>
+      <MenuBar url="/Manage/Flow/Form_Add.aspx" title="添加表单"></MenuBar>
+      <MenuBar url="/Manage/Flow/Form_Catagory.aspx" title="表单目录"></MenuBar>
+    </Menu>
+    <Menu key="form-modi">
+      <MenuBar url="/Manage/Flow/Form_List.aspx" title="返回·表单列表"></MenuBar>
+      <MenuBar url="/Manage/Flow/Form_Modi.aspx?FormId={0}" title="表单信息"></MenuBar>
+      <MenuBar url="/Manage/Flow/Form_Module.aspx?FormId={0}" title="智能生成器"></MenuBar>
+      <MenuBar url="/Manage/Flow/Form_Import.aspx?FormId={0}" title="导入"></MenuBar>
+      <MenuBar url="/Manage/Flow/Form_Export.aspx?FormId={0}" title="导出"></MenuBar>
+    </Menu>
+    <Menu key="flow">
+      <MenuBar url="/Manage/Flow/Flow_List.aspx" title="流程列表"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Add.aspx" title="添加流程"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Catagory.aspx" title="流程目录"></MenuBar>
+    </Menu>
+    <Menu key="flow-modi">
+      <MenuBar url="/Manage/Flow/Flow_List.aspx" title="返回·流程列表"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Modi.aspx?FlowID={0}" title="修改流程"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Priv.aspx?FlowID={0}" title="管理权限"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_VmlList.aspx?FlowID={0}" title="流程设计(图型)"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_List.aspx?FlowID={0}" title="流程设计(列表)"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Timer.aspx?FlowID={0}" title="定时设置"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_New.aspx?id={0}" title="新建流程步骤"></MenuBar>
+    </Menu>
+    <Menu key="flow-prcs-modi">
+      <MenuBar url="/Manage/Flow/Flow_Modi.aspx?FlowID={0}" title="返回·当前流程"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_List.aspx?FlowID={0}" title="返回·步骤列表"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_Modi.aspx?FlowID={0}&amp;id={1}" title="基本属性"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_Priv.aspx?FlowID={0}&amp;id={1}" title="经办权限"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_OpSet.aspx?FlowID={0}&amp;id={1}" title="经办设置"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_EditableFlds.aspx?FlowID={0}&amp;id={1}" title="可写字段"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_HiddenFlds.aspx?FlowID={0}&amp;id={1}" title="隐藏字段"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_Conditions.aspx?FlowID={0}&amp;id={1}" title="进出条件"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_Plugs.aspx?FlowID={0}&amp;id={1}" title="输入输出插件"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_Prcs_PassSet.aspx?FlowID={0}&amp;id={1}" title="流转设置"></MenuBar>
+    </Menu>
+    <Menu key="flow-other">
+      <MenuBar url="/Manage/Flow/Flow_NumberRule.aspx" title="流水号定义"></MenuBar>
+      <MenuBar url="/Manage/Flow/Flow_VarDefine.aspx" title="变量定义"></MenuBar>
+    </Menu>
+    <Menu key="work_delegate">
+      <MenuBar url="/Manage/Work/Work_AddDelegate.aspx" title="新建委托"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_DelegateList.aspx" title="我的委托"></MenuBar>
+      <!--MenuBar url="/Manage/Work/Work_DelegateList.aspx" title="修改委托规则"></MenuBar-->
+    </Menu>
+    <Menu key="work_mywork">
+      <!--<MenuBar url="/Manage/Work/Work_MyWork.aspx?flag=1" title="未接收"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_MyWork.aspx?flag=2" title="办理中"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_MyWork.aspx?flag=3" title="已办结"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_MyWork.aspx?flag=4" title="已挂起"></MenuBar>-->
+      <MenuBar url="/Manage/Work/Work_MyWork.aspx?flag=0" title="我的申请"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_MyCheck.aspx?flag=0" title="经我流程"></MenuBar>
+    </Menu>
+    <Menu key="run">
+      <MenuBar url="/Manage/Work/Work_FillIn.aspx?Flow_Id={0}" title="新建工作"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_MyWork.aspx?flag=0" title="我的流程"></MenuBar>
+      <!--<MenuBar url="/Manage/Work/Run_SignForm.aspx?Flow_Id={0}" title="签办表单"></MenuBar>
+      <MenuBar url="/Manage/Work/Run_PassForm.aspx?Flow_Id={0}" title="转交工作"></MenuBar>-->
+    </Menu>
+    <Menu key="run_a">
+      <MenuBar url="/Manage/Work/Run_SignForm.aspx?Run_Id={0}" title="签办表单"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_MyCheck.aspx?flag=0" title="返回"></MenuBar>
+    </Menu>
+    <Menu key="run_apply_list">
+      <MenuBar url="/Manage/Work/Work_Apply.aspx" title="我的申请"></MenuBar>
+    </Menu>
+    <Menu key="run_apply">
+      <MenuBar url="/Manage/Work/Work_Apply.aspx" title="我的申请"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_ApplyOfficial.aspx" title="转正"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_ApplyTransferKong.aspx" title="调岗"></MenuBar>
+      <MenuBar url="/Manage/Work/Work_ApplyLeavejobs.aspx" title="离职"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="客户">
+    <Menu key="MyCustomer">
+      <MenuBar url="/Manage/CRM/Crm_My_CustomerInfo.aspx" title="我的信息"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_My_CustomerList.aspx" title="我的客户"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_My_CustomerShare.aspx" title="我的共享"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_My_CustomerToCheck.aspx" title="等待审核"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_My_AddCustomer.aspx" title="添加客户"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_My_ProgramList.aspx" title="我的方案"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_My_AgreementList.aspx" title="我的协议"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_Logs.aspx" title="信息维护日志"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Send.aspx" title="发送短信"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Share">
+      <MenuBar url="/Manage/CRM/Crm_Share_Customer.aspx" title="共享客户"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Share_CustomerLog.aspx" title="共享日志"></MenuBar>
+    </Menu>
+    <Menu key="Customer">
+      <MenuBar url="/Manage/CRM/Crm_Manage_CustomerInfo.aspx" title="客户信息"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Manage_CustomerList.aspx" title="客户管理"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Manage_ProgramList.aspx" title="方案管理"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Manage_AgreementList.aspx" title="协议管理"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Manage_CustomerLogs.aspx" title="维护日志"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Hand">
+      <MenuBar url="/Manage/CRM/CRM_Hand_Customer.aspx" title="客户批量移交"></MenuBar>
+      <MenuBar url="/Manage/CRM/CRM_Hand_CustomerLog.aspx" title="客户移交日志"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Trace">
+      <MenuBar url="/Manage/CRM/Crm_Trace_CustomerTraceInfo.aspx" title="跟踪信息"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Trace_CustomerTrace.aspx" title="客户跟踪日志"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Trace_CustomerTraceLog.aspx" title="个人跟踪日志"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Check">
+      <MenuBar url="/Manage/CRM/Crm_Check_CheckCustomer.aspx" title="客户审核"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Check_CheckCustomerLog.aspx" title="审核日志"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Maintain">
+      <MenuBar url="/Manage/CRM/Crm_MT_CustomerMTInfo.aspx" title="维护信息"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_MT_CustomerMT.aspx" title="客户维护日志"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_MT_CustomerMTLog.aspx" title="个人维护日志"></MenuBar>
+    </Menu>
+
+    <Menu key="Customer-Recycle">
+      <MenuBar url="/Manage/CRM/Crm_Recycle_Customer.aspx" title="废弃中心"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Recycle_Log.aspx" title="废弃/回收日志"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Modi">
+      <MenuBar url="/Manage/CRM/Crm_Manage_CustomerList.aspx" title="返回·客户列表"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_SingleM_ShowCustomerBusiness.aspx?PageMode=manager&amp;CustomerID={0}" title="客户业务"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_ShowCustomer.aspx?CustomerID={0}" title="客户信息"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_EditCustomer.aspx?CustomerID={0}" title="信息维护"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_AddContact.aspx?Action=Add&amp;CustomerID={0}" title="联系人"></MenuBar>
+    </Menu>
+    <Menu key="Customer-Modi-Maintain">
+      <MenuBar url="/Manage/CRM/Crm_Manage_CustomerList.aspx" title="返回·客户列表"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_SingleM_ShowCustomerBusiness.aspx?CustomerID={0}" title="客户跟踪"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_SingleM_ShowCustomerBusinessClient.aspx" title="根据客户查看跟踪"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_SingleM_ShowCustomerBusinessUser.aspx" title="根据业务员查看跟踪"></MenuBar>
+    </Menu>
+    <Menu key="MyCustomer-Modi">
+      <MenuBar url="/Manage/CRM/Crm_My_CustomerList.aspx" title="返回·客户列表"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_SingleM_ShowCustomerBusiness.aspx?PageMode=my&amp;CustomerID={0}" title="客户业务"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_ShowCustomer.aspx?PageMode=my&amp;CustomerID={0}" title="客户信息"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_EditCustomer.aspx?PageMode=my&amp;CustomerID={0}" title="信息维护"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Single_AddContact.aspx?PageMode=my&amp;Action=Add&amp;CustomerID={0}" title="联系人"></MenuBar>
+    </Menu>
+    <Menu key="MyCustomer-Modi-Maintain">
+      <MenuBar url="/Manage/CRM/Crm_My_CustomerList.aspx" title="返回·客户列表"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_SingleM_ShowCustomerBusiness.aspx?PageMode=my&amp;CustomerID={0}" title="客户业务"></MenuBar>
+    </Menu>
+    <Menu key="Customer-dict">
+      <MenuBar url="/Manage/CRM/Crm_Dict_Category.aspx" title="客户内部分类"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Dict_CompanyNature.aspx" title="客户企业性质"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Dict_Source.aspx" title="客户来源"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Dict_BussinessLevel.aspx" title="客户合作分类"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Dict_Industry.aspx" title="客户行业分类"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Dict_Stage.aspx" title="客户跟踪阶段"></MenuBar>
+      <MenuBar url="/Manage/CRM/Crm_Dict_BuyHibbit.aspx" title="客户忠诚度"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="资产">
+    <Menu key="Assets">
+      <MenuBar url="/Manage/Assets/Ass_AddAssets.aspx" title="物品入库"></MenuBar>
+      <MenuBar url="/Manage/Assets/Ass_AddConsuming.aspx" title="物品领用"></MenuBar>
+      <MenuBar url="/Manage/Assets/Ass_ReturnAssets.aspx" title="物品归还"></MenuBar>
+      <MenuBar url="/Manage/Assets/Ass_AddDestroy.aspx" title="物品销毁"></MenuBar>
+      <MenuBar url="/Manage/Assets/Ass_ProductSales.aspx" title="物品出售"></MenuBar>
+    </Menu>
+    <Menu key="AssetsList">
+      <MenuBar url="/Manage/Assets/Ass_AssetsList.aspx" title="物品仓库查询"></MenuBar>
+    </Menu>
+    <Menu key="AssetsList-Details">
+      <MenuBar url="/Manage/Assets/Ass_AssetsList.aspx" title="返回·物品列表"></MenuBar>
+      <MenuBar url="/Manage/Assets/Ass_EditAssets.aspx?WarehouseID={0}" title="物品修改"></MenuBar>
+    </Menu>
+    <Menu key="MyAssetsList">
+      <MenuBar url="/Manage/Assets/Ass_MyAssets.aspx" title="我的装备"></MenuBar>
+    </Menu>
+    <Menu key="AssetsLogs">
+      <MenuBar url="/Manage/Assets/Ass_LogsList.aspx" title="物品日志查询"></MenuBar>
+    </Menu>
+    <Menu key="AssetsPriv">
+      <MenuBar url="/Manage/Assets/Ass_EquipmentList.aspx" title="查询个人日志"></MenuBar>
+    </Menu>
+    <Menu key="AssetsStat">
+      <MenuBar url="/Manage/Assets/Ass_Statistics.aspx" title="物品统计分析"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="销售">
+    <Menu key="Sale_Temp">
+      <MenuBar url="/Manage/CTR/CTR_Modules.aspx" title="模板管理"></MenuBar>
+      <MenuBar url="/Manage/CTR/CTR_Label.aspx" title="标签管理"></MenuBar>
+      <MenuBar url="/Manage/CTR/AddTemp.aspx" title="添加模板"></MenuBar>
+    </Menu>
+    <Menu key="Sale_Contract_Modi">
+      <MenuBar url="/Manage/CTR/ContractList.aspx" title="返回·流程列表"></MenuBar>
+      <MenuBar url="/Manage/CTR/EditContract.aspx?ContractID={0}" title="修改合同信息"></MenuBar>
+      <MenuBar url="/Manage/CTR/AddContractProduct.aspx?ContractID={0}" title="添加合同产品"></MenuBar>
+    </Menu>
+    <Menu key="Sale_Contract">
+      <MenuBar url="/Manage/CTR/AddContract.aspx" title="新建合同"></MenuBar>
+      <MenuBar url="/Manage/CTR/ContractList.aspx" title="合同列表"></MenuBar>
+    </Menu>
+    <Menu key="Sale_Product">
+      <MenuBar url="/Manage/CTR/AddProduct.aspx" title="添加产品"></MenuBar>
+      <MenuBar url="/Manage/CTR/ProductList.aspx" title="产品管理"></MenuBar>
+      <MenuBar url="/Manage/CTR/ProductCatagory.aspx" title="产品分类"></MenuBar>
+    </Menu>
+    <Menu key="Sale_Product_Edit">
+      <MenuBar url="/Manage/CTR/ProductList.aspx" title="返回产品管理"></MenuBar>
+      <MenuBar url="/Manage/CTR/AddProduct.aspx?ProductID={0}" title="编辑产品"></MenuBar>
+      <MenuBar url="/Manage/CTR/AddProductDept.aspx?ProductID={0}" title="编辑部门"></MenuBar>
+    </Menu>
+    <Menu key="Sale_Supplier">
+      <MenuBar url="/Manage/CTR/AddSupplier.aspx" title="添加供应商"></MenuBar>
+      <MenuBar url="/Manage/CTR/SupplierList.aspx" title="供应商列表"></MenuBar>
+    </Menu>
+  </Menus>
+  <Menus title="人事">
+    <Menu key="HR-kq">
+      <MenuBar url="/Manage/HR/HR_Signin.aspx" title="今日签到"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Status.aspx" title="员工状态"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Statements.aspx" title="月报表管理"></MenuBar>
+    </Menu>
+    <Menu key="HR-set">
+      <MenuBar url="/Manage/HR/HR_Text_Templates.aspx" title="人事模板"></MenuBar>
+    </Menu>
+    <Menu key="HR-da">
+      <MenuBar url="/Manage/HR/HR_Intojobs.aspx?state=5" title="主管面试"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Intojobs.aspx?state=6" title="办理入职"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Intojobs.aspx?state=10" title="新入职员工"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Intojobs.aspx?state=20" title="正式员工"></MenuBar>
+      <!--<MenuBar url="/Manage/HR/HR_Intojobs.aspx?state=30" title="人才储备"></MenuBar>-->
+      <MenuBar url="/Manage/HR/HR_Intojobs.aspx?state=40" title="离职员工"></MenuBar>
+    </Menu>
+    <Menu key="HR-new">
+      <MenuBar url="/Manage/HR/HR_NewIntojobs.aspx " title="新进员工"></MenuBar>
+    </Menu>
+    <Menu key="HR-show">
+      <MenuBar url="/Manage/HR/HR_Intojobs.aspx?state={1}" title="返回列表"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_DutyLogs.aspx?UserID={0}" title="档案记录"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_AddIntojobs.aspx?UserID={0}" title="入职信息"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Official.aspx?UserID={0}" title="转正信息"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_TransferKong.aspx?UserID={0}" title="调岗/升迁"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Userjobs.aspx?UserID={0}" title="加/撤职"></MenuBar>
+      <MenuBar url="/Manage/HR/HR_Leavejobs.aspx?UserID={0}" title="离职信息"></MenuBar>
+    </Menu>
+    <Menu key="HR-Grade">
+      <MenuBar url="/Manage/HR/HR_Grade.aspx" title="级别管理"></MenuBar>
+    </Menu>
+    <Menu key="HR-GradeBind">
+      <MenuBar url="/Manage/HR/HR_Grade.aspx" title="返回列表"></MenuBar>
+    </Menu>
+    <Menu key="user">
+      <MenuBar url="/Manage/HR/User_UserList.aspx?CompanyID=11" title="员工管理"></MenuBar>
+    </Menu>
+    <Menu key="user-detail">
+      <MenuBar url="/Manage/HR/User_UserList.aspx?CompanyID=11" title="返回·员工列表"></MenuBar>
+      <MenuBar url="/Manage/HR/User_EditUser.aspx?UserID={0}" title="基本信息"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Skill.aspx?UserID={0}" title="个人技能"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Education.aspx?UserID={0}" title="教育经历"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Work.aspx?UserID={0}" title="工作经历"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Family.aspx?UserID={0}" title="家庭成员"></MenuBar>
+      <MenuBar url="/Manage/HR/User_UrgentLink.aspx?UserID={0}" title="紧急联络人"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Credentials.aspx?UserID={0}" title="证书"></MenuBar>
+      <MenuBar url="/Manage/HR/User_Set.aspx?UserID={0}" title="设置"></MenuBar>
+    </Menu>
+    <Menu key="proj">
+      <MenuBar url="/Manage/Proj/Proj_Project.aspx" title="我的项目"></MenuBar>
+      <MenuBar url="/Manage/Proj/Proj_Addproject.aspx" title="项目申请"></MenuBar>
+    </Menu>
+    <Menu key="proj2">
+      <MenuBar url="/Manage/Proj/Proj_Project.aspx" title="项目列表"></MenuBar>
+      <MenuBar url="/Manage/Proj/Proj_ProjectDetail.aspx?id={0}" title="项目查看"></MenuBar>
+    </Menu>
+    <Menu key="proj_manage">
+      <MenuBar url="/Manage/Proj/Proj_ProjectManage.aspx" title="全部项目"></MenuBar>
+      <MenuBar url="/Manage/Proj/Proj_ProjectManage.aspx?state=1" title="未审核项目"></MenuBar>
+      <MenuBar url="/Manage/Proj/Proj_ProjectRun.aspx" title="运行中项目"></MenuBar>
+      <MenuBar url="/Manage/Proj/Proj_ProjectRun.aspx?state=2" title="已结束项目"></MenuBar>
+    </Menu>
+    <Menu key="proj_state">
+      <MenuBar url="/Manage/Proj/Proj_ProjectState.aspx " title="项目状态"></MenuBar>
+      <MenuBar url="/Manage/Proj/Proj_ProjectUser.aspx" title="员工状态"></MenuBar>
+    </Menu>
+    <Menu key="proj_log">
+      <MenuBar url="/Manage/Proj/Proj_ProjectLogs.aspx" title="项目日志"></MenuBar>
+    </Menu>
+
+    <Menu key="xz_notify">
+      <MenuBar url="/Manage/XZ/NotifyList.aspx" title="公告列表"></MenuBar>
+      <MenuBar url="/Manage/XZ/AddNotify.aspx" title="创建公告"></MenuBar>
+      <MenuBar url="/Manage/XZ/SendNotifyFiles.aspx" title="文件通知"></MenuBar>
+      <MenuBar url="/Manage/XZ/NotifyCategory.aspx" title="公告分类"></MenuBar>
+    </Menu>
+    <Menu key="xz_notifyfiles">
+      <MenuBar url="/Manage/XZ/NotifyFiles.aspx" title="文件拟写"></MenuBar>
+      <MenuBar url="/Manage/XZ/MyFiles.aspx" title="我拟写的文件"></MenuBar>
+      <MenuBar url="/Manage/XZ/MyReceiveFiles.aspx" title="我接收的文件"></MenuBar>
+      <MenuBar url="/Manage/XZ/MyCheckFiles.aspx" title="经我审批的文件"></MenuBar>
+    </Menu>
+  <Menu key="xz_train">
+    <MenuBar url="/Manage/XZ/TrainList.aspx" title="考核培训列表"></MenuBar>
+    <MenuBar url="/Manage/XZ/AddTrain.aspx" title="新增信息"></MenuBar>
+  </Menu>
+  <Menu key="xz_mytrain">
+    <MenuBar url="/Manage/XZ/MyTrainList.aspx" title="我的考核培训记录"></MenuBar>
+  </Menu>
+</Menus>
+  <Menus title="计划">
+    <Menu key="plan_my">
+      <MenuBar url="/Manage/Plan/Plan_MyPlan.aspx" title="我的计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_MyPlanDay.aspx" title="日计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_MyPlanWeek.aspx" title="周计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_MyPlanMonth.aspx" title="月计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_Search.aspx" title="查询"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_EditPlan.aspx" title="创建"></MenuBar>
+    </Menu>
+    
+    <Menu key="plan_dept">
+      <MenuBar url="/Manage/Plan/Plan_DeptManager.aspx" title="部门计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerPlanDay.aspx?type=1&amp;rtype=2" title="日计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerPlanDay.aspx?type=2&amp;rtype=2" title="周计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerPlanDay.aspx?type=3&amp;rtype=2" title="月计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_DeptSearch.aspx?type=3&amp;rtype=2" title="查询"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_EditPlan.aspx?rtype=2" title="创建"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_CheckPlan.aspx" title="计划审核"></MenuBar>
+    </Menu>
+    <Menu key="plan_cmp">
+      <MenuBar url="/Manage/Plan/Plan_CmpManager.aspx" title="公司计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerPlanDay.aspx?type=1&amp;rtype=3" title="日计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerPlanDay.aspx?type=2&amp;rtype=3" title="周计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerPlanDay.aspx?type=3&amp;rtype=3" title="月计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_DeptSearch.aspx?type=3&amp;rtype=3" title="按日期查询"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_ManagerUserSearch.aspx" title="按人员查询"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_EditPlan.aspx?rtype=3" title="创建"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_CheckPlan.aspx?rtype=3" title="计划审核"></MenuBar>
+    </Menu>
+    <Menu key="plan_cmp_dept">
+      <MenuBar url="/Manage/Plan/Plan_CmpManager.aspx" title="返回"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_DeptPlan.aspx?type=1&amp;dept={0}" title="日计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_DeptPlan.aspx?type=2&amp;dept={0}" title="周计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_DeptPlan.aspx?type=3&amp;dept={0}" title="月计划"></MenuBar>
+    </Menu>
+    <Menu key="plan_inspection" title="还未使用">
+      <MenuBar url="/Manage/Plan/Plan_Inspect_Month.aspx" title="月计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_Inspect_Week.aspx" title="周计划"></MenuBar>
+      <MenuBar url="/Manage/Plan/Plan_Inspect_Day.aspx" title="日计划"></MenuBar>
+    </Menu>
+    <Menu key="WorkOrder_add" title="工作单提交人">
+      <MenuBar url="/Manage/WorkOrder/WorkOrder_List.aspx?xUser={0}" title="工作单列表"></MenuBar>
+      <MenuBar url="/Manage/WorkOrder/WorkOrder_Add.aspx?xUser={0}" title="下工作单"></MenuBar>
+    </Menu>
+    <Menu key="WorkOrder_Assign" title="工作单分配人">
+      <MenuBar url="/Manage/WorkOrder/WorkOrder_Assign.aspx" title="工作单列表"></MenuBar>
+      <MenuBar url="/Manage/WorkOrder/WorkOrder_AssignDeptCount.aspx" title="工作量统计"></MenuBar>
+    </Menu>
+    <Menu key="WorkOrder_My" title="工作单执行人">
+      <MenuBar url="/Manage/WorkOrder/WorkOrder_My.aspx?xUser={0}" title="我的工作单"></MenuBar>
+    </Menu>
+    <Menu key="WorkOrder_Set" title="排班设置">
+      <MenuBar url="/Manage/WorkOrder/SetWork.aspx" title="排班设置"></MenuBar>
+    </Menu>
+    <Menu key="Finance_User" title="财务管理">
+      <MenuBar url="/Manage/Finance/FD_NewUserList.aspx" title="新入职员工"></MenuBar>
+      <MenuBar url="/Manage/Finance/FD_UserList.aspx" title="正式员工"></MenuBar>
+    </Menu>
+    <Menu key="Finance_Calculator" title="成本扣化计算器">
+      <MenuBar url="/Manage/Finance/FD_BusinessType.aspx" title="业务类型"></MenuBar>
+      <MenuBar url="/Manage/Finance/Calculator.aspx" title="扣化公式"></MenuBar>
+      <MenuBar url="/Manage/Finance/Variable.aspx " title="成员变量"></MenuBar>
+    </Menu>
+    <Menu key="Finance_DataList" title="数据报表">
+      <MenuBar url="/Manage/Finance/DataList.aspx" title="数据报表"></MenuBar>
+      <MenuBar url="/Manage/Finance/UserDataList.aspx?type=2" title="事业部报表"></MenuBar>
+      <MenuBar url="/Manage/Finance/UserDataList.aspx?type=1" title="业务员报表"></MenuBar>
+      <MenuBar url="/Manage/Finance/AddDataList.aspx" title="新增数据"></MenuBar>
+    </Menu>
+    <Menu key="Finance_MyDataList" title="提成查询">
+      <MenuBar url="/Manage/Finance/MyDataList.aspx" title="我的提成"></MenuBar>
+      <MenuBar url="/Manage/Finance/MYCalculator.aspx" title="提成计算器"></MenuBar>
+    </Menu>
+    <Menu key="Finance_DiviDataList" title="提成查询">
+      <MenuBar url="/Manage/Finance/MyDataList.aspx" title="我的提成"></MenuBar>
+      <MenuBar url="/Manage/Finance/DiviDataList.aspx" title="事业部报表"></MenuBar>
+      <MenuBar url="/Manage/Finance/DiviCalculator.aspx" title="提成计算器"></MenuBar>
+    </Menu>
+    <Menu key="DownLoad" title="下载">
+      <MenuBar url="/Manage/DownLoad/Index.aspx " title="下载专区"></MenuBar>
+      <MenuBar url="/Manage/DownLoad/UpLoad.aspx " title="表格上传"></MenuBar>
+    </Menu>
+    <Menu key="MyManage" title="我的管理">
+      <MenuBar url="/Manage/MyManage/Index.aspx" title="所有部门"></MenuBar>
+      <MenuBar url="#" title="部门信息"></MenuBar>
+      <MenuBar url="#" title="员工信息"></MenuBar>
+    </Menu>
+    <Menu key="send_email" title="邮件管理">
+      <MenuBar url="/Manage/Email/SendEmail.aspx" title="发送邮件"></MenuBar>
+      <MenuBar url="/Manage/Email/SetPOP3.aspx" title="配置POP3邮箱"></MenuBar>
+      <MenuBar url="/Manage/Email/ReceiveEmail.aspx" title="我的邮件内容"></MenuBar>
+    </Menu>
+  </Menus>
+</Menus>

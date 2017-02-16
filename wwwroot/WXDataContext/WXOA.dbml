@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WXOA" Class="WXOADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=WXOA;Persist Security Info=True;User ID=WXOA_2013;Pooling=True;Min Pool Size=50;Max Pool Size=512;Load Balance Timeout=30" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WXOAConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TE_Departments" Member="TE_Departments">
+    <Type Name="TE_Department">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NO" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsSubOrgan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Host" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Assistants" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UpHost" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpSubHosts" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubHosts" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="TE_Department_TU_User" Member="TU_Users" ThisKey="ID" OtherKey="DepartmentID" Type="TU_User" />
+      <Association Name="TE_Department_PLAN_Plan" Member="PLAN_Plans" ThisKey="ID" OtherKey="DepartmentID" Type="PLAN_Plan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TU_Users" Member="TU_Users">
+    <Type Name="TU_User">
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DutyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RealName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArchiveBySelf" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EditTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TU_User_PLAN_Plan" Member="PLAN_Plans" ThisKey="UserID" OtherKey="UserID" Type="PLAN_Plan" />
+      <Association Name="TE_Department_TU_User" Member="TE_Department" ThisKey="DepartmentID" OtherKey="ID" Type="TE_Department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TE_Duties" Member="TE_Duties">
+    <Type Name="TE_Duty">
+      <Column Name="ID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Menus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GradeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeptPos" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DutyCatagoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TE_DutyDetail" Member="TE_DutyDetails">
+    <Type Name="TE_DutyDetail">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Persons" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsersName" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="DepartentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DutyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DutyCatagoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GradeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PLAN_Plan" Member="PLAN_Plans">
+    <Type Name="PLAN_Plan">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Current]" Member="Current" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Summary" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Appraise" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RangeType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Stoptime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PlanState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="DateKey" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="TU_User_PLAN_Plan" Member="TU_User" ThisKey="UserID" OtherKey="UserID" Type="TU_User" IsForeignKey="true" />
+      <Association Name="TE_Department_PLAN_Plan" Member="TE_Department" ThisKey="DepartmentID" OtherKey="ID" Type="TE_Department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PLAN_Appraise" Member="PLAN_Appraises">
+    <Type Name="PLAN_Appraise">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlanID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Appraise" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PLAN_View1" Member="PLAN_View1s">
+    <Type Name="PLAN_View1">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RangeType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Expr1" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

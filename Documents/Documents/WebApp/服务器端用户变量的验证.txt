@@ -1,0 +1,99 @@
+﻿服务器端的验证
+     编辑者：孙战平  日期：2012-7-7  
+==========================================
+1.使用示例：
+  
+  string idcard=this.IsIDCard.value;
+  bool bF=ULCode.Validation.IsDigit(idcard);
+  if(bF)
+     Response.write('合法身份证号');
+  else
+     Response.write('非法身份证号');
+
+2.所有列表
+        //*************************数据类型验证*******************************
+        public static bool Check(object sQ, DbType sType)
+        public static bool Check(object sQ, OdbcType sType)
+        public static bool Check(object sQ, OleDbType sType)
+        public static bool Check(object sQ, OracleType sType)
+        public static bool Check(object sQ, SqlDbType sType)
+        public static bool Check(object sQ, object sO)
+        public static bool Check(object sQ, Type sType)
+        public static bool Check(object sQ, TypeCode sCode)
+        //*************************数据表达式验证*******************************
+        public static bool CheckBetween(object sQ, char cFrom, char cTo)
+        public static bool CheckBetween(object sQ, System.DateTime dFrom, System.DateTime dTo)
+        public static bool CheckBetween(object sQ, decimal iFrom, decimal iTo)
+        public static bool CheckBetween(object sQ, double iFrom, double iTo)
+        public static bool CheckBetween(object sQ, int iFrom, int iTo)
+        public static bool CheckBetween(object sQ, string sFrom, string sTo)
+        public static bool CheckIn(object sQ, params object[] oArr)
+        public static bool CheckIn(object sQ, string sSplittedString, string sSplitter)
+        public static bool CheckMatch(object sQ, string sPattern)
+        public static bool CheckMatch(object sQ, string sPattern, RegexOptions sRo)
+        //*************************正则表达式验证*******************************
+        //-----单个字符验证-----
+        //单个数字 验证
+        public static bool IsDigit(string inputData)
+        //英文字母 验证
+        public static bool IsLetter(string inputData)
+        //小写字母 验证
+        public static bool IsLowerLetter(string inputData)
+        //大写字母 验证
+        public static bool IsUpperLetter(string inputData)
+        //双字节数据 验证
+        public static bool IsDoubleByte(string inputData)
+        //中文
+        public static bool IsCHZN(string inputData)
+
+        //-----包含字符验证-----
+        //是否含空白字符
+        public static bool IsHasBlankLine(string inputData)
+        //含中文
+        public static bool IsHasCHZN(string inputData)
+        //含双字节
+        public static bool IsHasDoubleByte(string inputData)
+
+        //------全部字符验证----------------
+        //中文字符串
+        public static bool IsCHZNStr(string inputData)
+        //是否为数字
+        public static bool IsNumber(string inputData)
+        //双字节数据 验证
+        public static bool IsDoubleStr(string inputData)     
+		   
+        //-----业务数据验证-------------
+        //电话区号 验证
+        public static bool IsAreaCode(string inputData)
+        //电话号码
+        public static bool IsPhone(string inputData)
+        //城市六位代码 验证
+        public static bool IsCityCode(string inputData)
+        //Email数据 验证
+        public static bool IsEmail(string inputData)
+		//身份证号 验证
+        public static bool IsIDCard(string inputData)
+        //IP号 验证
+        public static bool IsIP(string inputData)
+        //中文姓名
+        public static bool IsName(string inputData)
+        //匿名
+        public static bool IsNickName(string inputData)
+        //网址
+        public static bool IsUrl(string inputData)
+        //用户名
+        public static bool IsUserName(string inputData)
+        //邮政编号
+        public static bool IsZip(string inputData)
+
+        //---------数据类型验证--------------
+        //符号整数
+        public static bool IsNumberSign(string inputData)
+        //时间型数据 验证
+        public static bool IsDateTime(string inputData)
+        //浮点型数据 验证
+        public static bool IsDecimal(string inputData)
+        //符号型浮点型数据 验证
+        public static bool IsDecimalSign(string inputData)
+        //Guid数据 验证
+        public static bool IsGuid(object guid)

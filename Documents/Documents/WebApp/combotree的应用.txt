@@ -1,0 +1,27 @@
+﻿combotree树控件的应用：
+1.导入easyui的javascript和css文件
+例如：
+<link href="/App_EasyUI/themes/default/easyui.css" rel="Stylesheet" type="text/css" />
+<link href="/App_EasyUI/themes/default/easyui.css" rel="Stylesheet" type="text/css" />
+<link href="/App_EasyUI/themes/icon.css" rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="/App_EasyUI/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/App_EasyUI/jquery.easyui.min.js"></script>
+2.在页面<body></body>中添加
+<select id="ParentID" runat="server" class="easyui-combotree" url="/App_Services/GetJsonOfDepartment.ashx" valueField="id" textField="text" panelHeight="auto" style="width:200px">
+字段说明：
+url:生成json格式的程序文件,比如*.ashx;
+valueField:id 字段值，对应json中的id;
+textField:text tree显示文字，对应json中的text;
+panelHeight="auto" 下拉面板的高度,数字或者auto;
+3.为隐藏域赋值代码:
+隐藏域：<input type="hidden" id="pid" runat="server" />
+赋值：
+$('#ParentID').combotree({
+        onSelect: function (node) {
+		$('#pid').val(node.id);
+	}
+});
+后台获取隐藏域的值即可。
+
+
+
