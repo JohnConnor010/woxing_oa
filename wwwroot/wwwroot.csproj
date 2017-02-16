@@ -3128,6 +3128,7 @@
     <Content Include="Manage\Email\kindeditor-4.1.10\asp.net\upload_json.ashx" />
     <Content Include="packages.config" />
     <Content Include="Manage\Email\FetchEmail.ashx" />
+    <Content Include="App_Data\WXOA.bak" />
     <None Include="Properties\PublishProfiles\publish1.pubxml" />
     <None Include="Service References\SMSWebServiceReference\Service.disco" />
     <None Include="Service References\SMSWebServiceReference\configuration91.svcinfo" />
